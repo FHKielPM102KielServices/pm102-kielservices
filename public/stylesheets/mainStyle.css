@@ -1,5 +1,4 @@
 /* CSS Document */
-
 body{background:#fff; color:#0F0F0F; font:15px/20px Arial, Helvetica, sans-serif; margin:65px 0 0; padding:0;}
 div, ul, h1, h2, h3, li, p, img{margin:0; padding:0;}
 ul{list-style-type:none;}
@@ -36,7 +35,7 @@ ul{list-style-type:none;}
 /* BODY PANEL*/
 #bodyPanel{width:762px; height:520px; position:relative; margin:0 auto; padding:0;}
 #bodyPanel h2{ background:#fff; display:block; width:250px; height:18px; margin:32px; font:30px/30px Georgia, "Times New Roman", Times, serif; font-weight:normal; padding:4px 0 0 202px; color: #ae1d75;}
-#bodyPanel p{background:url(../images/kiel.jpg) 0 0 no-repeat #fff; margin:0 0 0 54px; padding:0 42px 35px 150px; color:#0F0F0F;}
+#bodyPanel p{ margin:0 0 0 54px; padding:0 42px 35px 150px; color:#0F0F0F;}
 #bodyPanel p span{font-weight:bold;}
 #bodyPanel p.dotline{background:url(../images/dot-line.gif) 0 0 repeat-x #fff; padding:0; margin:0 40px 0 25px; color:#000;}
 #bodyPanel p.capstext{background: url(../images/name.gif) bottom right no-repeat #fff; font:18px/24px Georgia, "Times New Roman", Times, serif; font-style:italic; color:#555555; padding:2px 10px 0 25px ; margin:0 35px 10px 0; }

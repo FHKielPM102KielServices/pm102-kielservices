@@ -80,9 +80,9 @@
 <div id="topPanel">
   <ul>
     <li><a href="">LOGIN/SIGNUP</a></li>
-    <li><a href="">CONTACT</a></li>
-    <li><a href="">SERVICES</a></li>
-    <li><a href="">ABOUT US</a></li>
+    <li><a href="contact.hjs">CONTACT</a></li>
+    <li><a href="service.his">SERVICES</a></li>
+    <li><a href="about.hjs">ABOUT US</a></li>
     <li class="active">Home</li>
   </ul>
   <a href=""><img src="./images/logo.PNG" title="Kiel Services" alt="Kiel Services" width="100" height="150" border="0" /></a>
