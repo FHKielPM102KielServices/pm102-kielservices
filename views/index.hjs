@@ -8,7 +8,7 @@
 <body>
   <div id="topPanel">
     <ul>
-      <li><a href="">LOGIN/SIGNUP</a></li>
+      <li><a href="login">LOGIN/SIGNUP</a></li>
       <li><a href="">CONTACT</a></li>
       <li><a href="">SERVICES</a></li>
       <li><a href="">ABOUT US</a></li>
