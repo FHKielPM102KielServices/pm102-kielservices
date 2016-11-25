@@ -12,7 +12,10 @@
     "express": "~4.14.0",
     "hjs": "~0.0.6",
     "morgan": "~1.7.0",
+    "mysql": "^2.12.0",
     "nodemon": "^1.11.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
     "serve-favicon": "~2.3.0"
   }
 }
