@@ -9,7 +9,7 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     #tech-slideshow > div {
       height: 200px;
       width: 2526px;
