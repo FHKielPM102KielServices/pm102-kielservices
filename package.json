@@ -9,6 +9,7 @@
     "body-parser": "~1.15.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
+    "ejs": "^2.5.2",
     "express": "~4.14.0",
     "hjs": "~0.0.6",
     "morgan": "~1.7.0",

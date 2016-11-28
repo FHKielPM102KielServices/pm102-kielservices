@@ -9,7 +9,7 @@ var mysql = require("mysql");
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "1234",
+    password: "1234",``
     database: "mydb"
 });
 
@@ -101,7 +101,9 @@ passport.deserializeUser(function(id, done) {
     });
 });
 
-
+router.get('/about', function(req, res, next) {
+  res.render('about', { title: 'Kiel Services Web Application' });
+});
 
 
 
