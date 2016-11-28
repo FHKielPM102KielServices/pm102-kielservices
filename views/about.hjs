@@ -130,7 +130,7 @@
       <li><a href="index">Home</a>|</li>
       <li><a href="">About us</a> |</li>
       <li><a href="">Support</a>|</li>
-      <li><a href="login">Signup/Sign In</a> |</li>
+      <li><a href="login">Login</a> |</li>
       <li><a href="">Contact</a></li>
     </ul>
     <p class="copyright">CopyRight © Kiel services all right reserved</p>

@@ -9,7 +9,6 @@
       position: relative;
       overflow: hidden;
     }
-
     #tech-slideshow > div {
       height: 200px;
       width: 2526px;
@@ -24,18 +23,18 @@
       -webkit-transition: opacity 0.5s ease-out;
       -ms-transition: opacity 0.5s ease-out;
 
-      / Slow /
+      /* Slow */
       -webkit-animation: moveSlideshow 60s linear infinite;
       -moz-animation:    moveSlideshow 60s linear infinite;
 
-      -webkit-transform: translate3d(0,0,0); / Performance /
+      -webkit-transform: translate3d(0,0,0); /* Performance */
 
     }
     #tech-slideshow #tech-slideshow-1 {
-      / Sprite /
+      /* Sprite */
       background-position: 0 200px;
 
-      / Fast /
+      /* Fast */
       -webkit-animation: moveSlideshow 20s linear infinite;
       -moz-animation:    moveSlideshow 20s linear infinite;
     }
@@ -106,7 +105,7 @@
 </div>
 <div id="bodyPanel">
   <h2>VISION </h2>
-  <p>Welcome to the <span>{{ title }}</span> Provide all the services in single platform with an effective ay for the new persons in kiel as well as international persons. With the reference will provide an executive way of the platform and then provide the services </p>
+  <p>Welcome to the <span>{{ title }}</span> which provides all services in a single platform with an effective way for everyone in kiel as well as international persons. With the reference will provide an executive way of the platform and then provide the services </p>
   <p class="dotline"><img src="/images/images/blank.gif" alt="" width="1" height="1" /></p>
   <p class="capstext">The best way to find yourself is to lose yourself in the service of others. </p>
   <p class="dotline"><img src="/images/images/blank.gif" alt="" width="1" height="1" /></p>
@@ -144,7 +143,7 @@
       <li><a href="">Home</a>|</li>
       <li><a href="">About us</a> |</li>
       <li><a href="">Support</a>|</li>
-      <li><a href="">Clients</a> |</li>
+      <li><a href="login">Login</a> |</li>
       <li><a href="about">About us</a></li>
     </ul>
     <p class="copyright">CopyRight © Kiel services all right reserved</p>
