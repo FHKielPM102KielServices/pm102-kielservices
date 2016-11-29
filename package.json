@@ -14,5 +14,18 @@
     "morgan": "~1.7.0",
     "nodemon": "^1.11.0",
     "serve-favicon": "~2.3.0"
-  }
+  },
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FHKielPM102KielServices/pm102-kielservices.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FHKielPM102KielServices/pm102-kielservices/issues"
+  },
+  "homepage": "https://github.com/FHKielPM102KielServices/pm102-kielservices#readme",
+  "description": ""
 }

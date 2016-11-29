@@ -5,6 +5,11 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
     res.render('index', { title: 'Kiel Services Web Application' });
 });
+
+router.get('/contactUs', function(req, res, next) {
+    res.render('contactUs', {title: 'Kiel Services Web Application'})
+
+})
 /* GET home page. */
 router.get('/login', function(req, res, next) {
     res.render('login', { title: 'Kiel Services Web Application' });
