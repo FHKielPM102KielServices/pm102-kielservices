@@ -4,7 +4,7 @@
    <title>KIEL SERVICES</title>
    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
      <link href="./stylesheets/contactUsstyle.css" rel="stylesheet">
-         <script src="../contactUsvalidate.js"></script>
+     <script src="contactUsvalidate.js"></script>
    <style>
      #tech-slideshow {
        height: 200px;

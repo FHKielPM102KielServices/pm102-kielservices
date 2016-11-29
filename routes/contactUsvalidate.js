@@ -24,7 +24,7 @@ function _validate() {
 
             else {
                 CommVal = true;
-                if (emVal == true && fnVal == true && lnVal == true && cityVal == true && StatVal == true && CommVal == true) {
+                if (emVal == true && fnVal == true && lnVal == true && CommVal == true) {
                     postIt();
                 }
 
