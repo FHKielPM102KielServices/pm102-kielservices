@@ -17,7 +17,7 @@ function _validate() {
         }
         else {
             emVal = true;
-            if ( _fname == "" || _fname == null) {
+            if (_fname == "" || _fname == null) {
                 _lblError.innerHTML = "Please Enter your Name";
                 fnVal = false;
             }
