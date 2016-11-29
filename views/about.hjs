@@ -1,0 +1,148 @@
+<html>
+<head>
+  <title>KIEL SERVICES</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel='stylesheet' href='./stylesheets/aboutus.css' />
+  <style>
+    #tech-slideshow {
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+    }
+    #tech-slideshow > div {
+      height: 200px;
+      width: 2526px;
+      background: url(./images/collage.jpg);
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+
+      -moz-transition:  opacity 0.5s ease-out;
+      -o-transition: opacity 0.5s ease-out;
+      -webkit-transition: opacity 0.5s ease-out;
+      -ms-transition: opacity 0.5s ease-out;
+
+      /* Slow */
+      -webkit-animation: moveSlideshow 60s linear infinite;
+      -moz-animation:    moveSlideshow 60s linear infinite;
+
+      -webkit-transform: translate3d(0,0,0); /* Performance */
+
+    }
+    #tech-slideshow #tech-slideshow-1 {
+      /* Sprite */
+      background-position: 0 200px;
+
+      /* Fast */
+      -webkit-animation: moveSlideshow 20s linear infinite;
+      -moz-animation:    moveSlideshow 20s linear infinite;
+    }
+    #tech-slideshow:hover #tech-slideshow-2 {
+      opacity: 0;
+    }
+
+    @-webkit-keyframes moveSlideshow {
+      0%   {
+        -webkit-transform: translateX(0);
+        -moz-transform:    translateX(0);
+        -ms-transform:     translateX(0);
+        -o-transform:      translateX(0);
+        transform:         translateX(0);
+      }
+      100% {
+        -webkit-transform: translateX(-1684px);
+        -moz-transform:    translateX(-1684px);
+        -ms-transform:     translateX(-1684px);
+        -o-transform:      translateX(-1684px);
+        transform:         translateX(-1684px);
+      }
+    }
+    @-moz-keyframes moveSlideshow {
+      0%   {
+        -webkit-transform: translateX(0);
+        -moz-transform:    translateX(0);
+        -ms-transform:     translateX(0);
+        -o-transform:      translateX(0);
+        transform:         translateX(0);
+      }
+      100% {
+        -webkit-transform: translateX(-1684px);
+        -moz-transform:    translateX(-1684px);
+        -ms-transform:     translateX(-1684px);
+        -o-transform:      translateX(-1684px);
+        transform:         translateX(-1684px);
+      }
+    }
+  </style>
+</head>
+<body>
+<div id="topPanel">
+  <ul>
+    <li><a href="login">LOGIN/SIGNUP</a></li>
+    <li><a href="">CONTACT</a></li>
+    <li><a href="">SERVICES</a></li>
+    <li class="active">ABOUT US</a></li>
+    <li><a href="index">Home</li>
+  </ul>
+  <a href=""><img src="./images/logo.PNG" title="Kiel Services" alt="Kiel Services" width="100" height="150" border="0" /></a>
+
+  <div id="headerPanelfast">
+    <h2>KIEL</h2>
+    <p>Introduction to Kiel</p>
+    <a href="">&nbsp;</a>
+  </div>
+  <div id="headerPanelsecond">
+    <h2>VIEWS</h2>
+    <p>Top Attractions of Kiel</p>
+    <a href="">&nbsp;</a>
+  </div>
+  <div id="headerPanelthird">
+    <h2>services</h2>
+    <p>Services provided by us for Easy Day to Day activities in Kiel</p>
+    <a href="">&nbsp;</a>
+  </div>
+</div>
+<div id="bodyPanel">
+  <h2>About Us</h2>
+  <p> <i> <dd> Our Product is combined service platform for people in and around kiel for easy processing of day to day activities. </br>It provides near by services available for the customers by taking their location into account using GPS and sorting the facilities available near to them.</dd> </br> <dd> It will be real time platform for finding daily needs like Supermarkets,transports and Hospitals near by to them as well as providing details to the user by giving them details about nearby Shopping malls,entertainment areas and Dormitory details.</dd> </br> <dd> The Main objective is to sort out the facilities nearby to them instead of giving an overview with the address details about the places, so that it will be easy for them to know the places and routes. </dd> </br> </p>
+<h2>Future Goals</h2>
+<p><ul>
+<dd> <li>Implementiong in Other parts of Germany</li></dd>
+<dd><li>Adding more features</li></dd>
+<dd><li>Making our site more User-Friendly</li></dd></ul>
+</p>
+</div>
+<div id="page-wrap">
+
+
+  <div id="tech-slideshow">
+    <div id="tech-slideshow-1"></div>
+    <div id="tech-slideshow-2"></div>
+  </div>
+
+  <!--  <p>AND it speeds up  is just too big.</p>
+    -->
+</div>
+<div id="footerPanel">
+  <div id="footerbodyPanel">
+    <ul>
+      <li><a href="index">Home</a>|</li>
+      <li><a href="">About us</a> |</li>
+      <li><a href="">Support</a>|</li>
+      <li><a href="login">Login</a> |</li>
+      <li><a href="">Contact</a></li>
+    </ul>
+    <p class="copyright">CopyRight © Kiel services all right reserved</p>
+    <ul class="templateworld">
+      <li>Design By:</li>
+      <li><a href="">MIE_TEAM</a></li>
+    </ul>
+    <!-- <div id=""><a href="">KIEL SERVICES</a></div> -->
+    <div id="footercssPanel"><a href="">KIEL</a>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>
