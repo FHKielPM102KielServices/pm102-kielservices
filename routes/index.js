@@ -1,9 +1,9 @@
 var express = require('express');
-var router = express.Router();
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mysql = require("mysql");
-
+// var $ = require("jquery")("/header.hjs");
+var router = express.Router();
 
 // First you need to create a connection to the db
 var con = mysql.createConnection({
@@ -17,13 +17,11 @@ router.get('/', function(req, res, next) {
     res.render('index', { title: 'Kiel Services Web Application' });
 });
 
-router.get('/contactUs', function(req, res, next) {
-    res.render('contactUs', {title: 'Kiel Services Web Application'})
+//Login
 
-})
-/* GET home page. */
+// var ht = $('#loadContent').load('page1.html');
 router.get('/login', function(req, res, next) {
-    res.render('login', { title: 'Kiel Services Web Application' });
+    res.render('login', { title: 'Kiel Services Web Application'});
 });
 router.get('/forgotpassword', function(req, res, next) {
     res.render('forgotpassword', { title: 'Kiel Services Web Application' });
@@ -34,17 +32,10 @@ router.post('/loginOld', function(req, res, next) {
     res.render('forgotpassword', { title: 'Kiel Services Web Application' });
 });
 
-
-
-
-
 router.use(passport.initialize());
 router.use(passport.session());
 
-
 router.post('/login', function(req, res, next) {
-
-
     var username = req.param("username");
     var password = req.param("password");
 
@@ -106,12 +97,15 @@ passport.deserializeUser(function(id, done) {
     });
 });
 
+//ContactUs
+router.get('/contactUs', function(req, res, next) {
+    res.render('contactUs', {title: 'Kiel Services Web Application'})
+})
+
+//About
 router.get('/about', function(req, res, next) {
   res.render('about', { title: 'Kiel Services Web Application' });
 });
-
-
-
 
 module.exports = router;
 

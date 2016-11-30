@@ -1,149 +1,48 @@
+<!DOCTYPE html>
+<html>
 
- <html>
- <head>
-   <title>KIEL SERVICES</title>
-   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-     <link href="./stylesheets/contactUsstyle.css" rel="stylesheet">
-     <script src="contactUsvalidate.js"></script>
-   <style>
-     #tech-slideshow {
-       height: 200px;
-       position: relative;
-       overflow: hidden;
-     }
-     #tech-slideshow > div {
-       height: 200px;
-       width: 2526px;
-       background: url(./images/collage.jpg);
-       position: absolute;
-       top: 0;
-       left: 0;
-       height: 100%;
+<head>
+    <title>KIEL SERVICES</title>
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />-->
+    <!--<link href="./stylesheets/contactUsstyle.css" rel="stylesheet">-->
+    <!--<script src="contactUsvalidate.js"></script>-->
+    <link href="./stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="./stylesheets/stylish-portfolio.css" rel="stylesheet">
+    <link href="./font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
 
-       -moz-transition:  opacity 0.5s ease-out;
-       -o-transition: opacity 0.5s ease-out;
-       -webkit-transition: opacity 0.5s ease-out;
-       -ms-transition: opacity 0.5s ease-out;
+<body>
+    <header id="top" class="header">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-10 col-lg-offset-1" style="text-align: left">
+                    <h2>CONTACT US</h2>
 
-       /* Slow */
-       -webkit-animation: moveSlideshow 60s linear infinite;
-       -moz-animation:    moveSlideshow 60s linear infinite;
+                    <form action="" method="html" name="contact_form" id="contact_form">
+                        <div class="service-item">
+                            <div class="form-group well">
+                                <p>Have any questions?</p>
 
-       -webkit-transform: translate3d(0,0,0); /* Performance */
+                                <label><b>E-Mail</b></label>
+                                <input class="form-control" type="email" id="email">
+                                <label><b>Name</b></label>
+                                <input type="text" class="form-control" name="first_name" id="first_name" required>
+                                <br><br>
+                                <label for="comments">Message / Query</label>
+                                <br>
+                                <textarea name="comments" id="comments" rows="5" cols="60"></textarea>
+                                <label id="lblError">&nbsp;</label><br/>
 
-     }
-     #tech-slideshow #tech-slideshow-1 {
-       /* Sprite */
-       background-position: 0 200px;
+                                <input class="btn btn-dark btn-lg" type="button" id="_submit" value="Submit" onclick="_validate()">
+                                <input class="btn btn-dark btn-lg" type="reset" id="reset" value="Reset Fields"><br>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
-       /* Fast */
-       -webkit-animation: moveSlideshow 20s linear infinite;
-       -moz-animation:    moveSlideshow 20s linear infinite;
-     }
-     #tech-slideshow:hover #tech-slideshow-2 {
-       opacity: 0;
-     }
+    </header>
+</body>
 
-     @-webkit-keyframes moveSlideshow {
-       0%   {
-         -webkit-transform: translateX(0);
-         -moz-transform:    translateX(0);
-         -ms-transform:     translateX(0);
-         -o-transform:      translateX(0);
-         transform:         translateX(0);
-       }
-       100% {
-         -webkit-transform: translateX(-1684px);
-         -moz-transform:    translateX(-1684px);
-         -ms-transform:     translateX(-1684px);
-         -o-transform:      translateX(-1684px);
-         transform:         translateX(-1684px);
-       }
-     }
-     @-moz-keyframes moveSlideshow {
-       0%   {
-         -webkit-transform: translateX(0);
-         -moz-transform:    translateX(0);
-         -ms-transform:     translateX(0);
-         -o-transform:      translateX(0);
-         transform:         translateX(0);
-       }
-       100% {
-         -webkit-transform: translateX(-1684px);
-         -moz-transform:    translateX(-1684px);
-         -ms-transform:     translateX(-1684px);
-         -o-transform:      translateX(-1684px);
-         transform:         translateX(-1684px);
-       }
-     }
-   </style>
- </head>
- <body>
- <div id="topPanel">
-   <ul>
-     <li><a href="">LOGIN/SIGNUP</a></li>
-     <li class="active">CONTACT</li>
-     <li><a href="service">SERVICES</a></li>
-     <li><a href="about">ABOUT US</a></li>
-     <li><a href="">Home</li>
-   </ul>
-   <a href=""><img src="./images/logo.PNG" title="Kiel Services" alt="Kiel Services" width="100" height="150" border="0" /></a>
-   </div>
-
- <div id="headerPanel">
-          <h2>CONTACT US</h2>
-
-          <form action="" method="html"
-                name="contact_form" id="contact_form">
-
-              <h2>
-                  <p>Have any Questions?</p>
-                  <label for="email">E-Mail:</label>
-                  <input type="email" id="email" ><br>
-                  <label for="first_name">Name:</label>
-                  <input type="text" name="first_name" id="first_name" required><br>
-                  <br>
-                  <label for="comments">Message / Query:</label>
-                  <textarea name="comments" id="comments" rows="5" cols="23"></textarea>
-              </h2>
-              <h3 id="buttons">
-                  <label id="lblError">&nbsp;</label><br />
-                  <input type="button" id="_submit" value="Submit" onclick="_validate()">
-                  <input type="reset" id="reset" value="Reset Fields"><br>
-              </h3>
-          </form>
-      </section>
- </div>
- <div id="page-wrap">
-
-   <div id="tech-slideshow">
-     <div id="tech-slideshow-1"></div>
-     <div id="tech-slideshow-2"></div>
-   </div>
-
-   <!--  <p>AND it speeds up  is just too big.</p>
-     -->
- </div>
- <div id="footerPanel">
-   <div id="footerbodyPanel">
-     <ul>
-       <li><a href="">Home</a>|</li>
-       <li><a href="">About us</a> |</li>
-       <li><a href="">Support</a>|</li>
-       <li><a href="">Clients</a> |</li>
-       <li><a href="contactUs">Contact</a></li>
-     </ul>
-     <p class="copyright">CopyRight © Kiel services all right reserved</p>
-     <ul class="templateworld">
-       <li>Design By:</li>
-       <li><a href="">MIE_TEAM</a></li>
-     </ul>
-     <!-- <div id=""><a href="">KIEL SERVICES</a></div> -->
-     <div id="footercssPanel"><a href="">KIEL</a>
-
-     </div>
-   </div>
- </div>
- </body>
- </html>
-
+</html>
