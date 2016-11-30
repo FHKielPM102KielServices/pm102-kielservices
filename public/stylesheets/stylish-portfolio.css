@@ -250,3 +250,17 @@ footer {
   bottom: 5px;
   right: 5px;
 }
+
+.container {
+  margin-top: 30px;
+}
+
+input {
+    margin-right: 7px;
+    margin-bottom: 7px;
+}
+
+label {
+    margin-right: 7px;
+    margin-bottom: 7px;
+}

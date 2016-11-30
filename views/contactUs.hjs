@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>KIEL SERVICES</title>
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />-->
+    <!--<link href="./stylesheets/contactUsstyle.css" rel="stylesheet">-->
+    <!--<script src="contactUsvalidate.js"></script>-->
+    <link href="./stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="./stylesheets/stylish-portfolio.css" rel="stylesheet">
+    <link href="./font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <header id="top" class="header">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-10 col-lg-offset-1" style="text-align: left">
+                    <h2>CONTACT US</h2>
+
+                    <form action="" method="html" name="contact_form" id="contact_form">
+                        <div class="service-item">
+                            <div class="form-group well">
+                                <p>Have any questions?</p>
+
+                                <label><b>E-Mail</b></label>
+                                <input class="form-control" type="email" id="email">
+                                <label><b>Name</b></label>
+                                <input type="text" class="form-control" name="first_name" id="first_name" required>
+                                <br><br>
+                                <label for="comments">Message / Query</label>
+                                <br>
+                                <textarea name="comments" id="comments" rows="5" cols="60"></textarea>
+                                <label id="lblError">&nbsp;</label><br/>
+
+                                <input class="btn btn-dark btn-lg" type="button" id="_submit" value="Submit" onclick="_validate()">
+                                <input class="btn btn-dark btn-lg" type="reset" id="reset" value="Reset Fields"><br>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </header>
+</body>
+
+</html>
