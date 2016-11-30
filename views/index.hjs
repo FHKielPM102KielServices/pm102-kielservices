@@ -7,8 +7,7 @@
       <!-- Custom CSS -->
       <link href="./stylesheets/stylish-portfolio.css" rel="stylesheet">
       <!-- Fonts -->
-      <link href="./font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-      <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+      <link href="./font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">   
    </head>
    <body>
       <!-- Navigation -->
@@ -43,10 +42,12 @@
       <!-- Header -->
       <header id="top" class="header">
          <div class="text-vertical-center">
+              <img src="./images/logo.PNG" height="200" width="200" style="marginwidth:10 marginheight:10">
             <h1>Kiel Services</h1>
             <h3>Find Services &amp; Basic Necessities in Kiel</h3>
             <br>
             <a href="#about" class="btn btn-dark btn-lg">Find Out More</a>
+             <a href="#about" class="btn btn-dark btn-lg">Find Out More</a>
          </div>
       </header>
 

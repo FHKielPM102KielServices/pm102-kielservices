@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--<link href="./stylesheets/demo1.css" rel="stylesheet"></link>-->
+    <!-- Bootstrap -->
+    <link href="./stylesheets/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="./stylesheets/stylish-portfolio.css" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="./font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<header id="top" class="header">
+    <div class="text-vertical-center">
+        
+        <a onclick="document.getElementById('id01').style.display='block'" href="#about" class="btn btn-dark btn-lg">Login</a>
+        <a onclick="document.getElementById('id02').style.display='block'" href="#about" class="btn btn-dark btn-lg">SignUp</a>
+
+        <!--<img src="./images/logo.PNG" height="200" width="200" style="marginwidth:10 marginheight:10">
+        <h1>Kiel Services</h1>
+        <h3>Find Services &amp; Basic Necessities in Kiel</h3>
+        <br>
+        <a href="#about" class="btn btn-dark btn-lg">Find Out More</a>
+        <a href="#about" class="btn btn-dark btn-lg">Find Out More</a>-->
+    </div>   
+
+    <table class="table table-striped">
+        <tr>
+            <th>Col 1</th>
+            <th>Col 2</th>
+            <th>Col 3</th>
+            <th>Col 4</th>
+        </tr>
+        <tr>
+            <td>Col 1 val</td>
+            <td>Col 2 val</td>
+            <td>Col 3 val</td>
+            <td>Col 4 val</td>
+        </tr>
+                <tr>
+            <td>Col 1 val</td>
+            <td>Col 2 val</td>
+            <td>Col 3 val</td>
+            <td>Col 4 val</td>
+        </tr>
+    </table> 
+</header>
+
+<div id="id01" class="modal">
+
+    <form class="modal-content animate" method="post" action="login">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+        </div>
+
+        <div class="container">
+            <label><b>Username</b></label>
+            <input type="text" class="form-control" placeholder="Enter Username" name="username" required>
+
+            <label><b>Password</b></label>
+            <input type="password" class="form-control" placeholder="Enter Password" name="password" required>
+
+            <button type="submit" class=">Login</button>
+            <input type="checkbox" checked="checked"> Remember me
+        </div>
+
+        <div class="container">
+            <button type="button" class="btn btn-dark btn-lg" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            <span class="psw">Forgot <a href="forgotpassword">password</a><a href="#">?</a></span></div>
+    </form>
+</div>
+
+<div id="id02" class="modal">
+
+    <form class="modal-content animate" action="">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+        </div>
+
+        <div class="container">
+            <label><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required>
+
+            <label><b>Name</b></label>
+            <input type="text" placeholder="Enter name" name="name" required><br>
+
+            <label><b>Gender</b></label><br>
+            <input type="radio" name="gender" value="male" checked> Male
+            <input type="radio" name="gender" value="female"> Female<br>
+
+            <label><b>Date of Birth</b></label>
+            <input type="date" placeholder="Enter Date of Birth" name="dob" id="DoB" required><br>
+
+            <label><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" id="Email" required>
+
+            <label><b>Enter New Password</b></label>
+            <input type="password" placeholder="Enter Password" name="pswd1" id="password1" required>
+
+            <label><b>Re-Enter New Password</b></label>
+            <input type="password" placeholder="Enter Password" name="pswd2" id="password2" required>
+
+
+            <button type="submit" class="btn btn-dark btn-lg">SignUp</button>
+            <input type="checkbox" checked="checked"> Remember me
+        </div>
+
+        <div class="container">
+            <button type="button" class="btn btn-dark btn-lg" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+
+        </div>
+    </form>
+</div>
+
+
+<script>
+    // Get the modal
+    var modal = document.getElementById('id01','id02');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html>
