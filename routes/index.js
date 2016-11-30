@@ -6,21 +6,16 @@ var mysql = require("mysql");
 
 
 // First you need to create a connection to the db
-var con = mysql.createConnection({
+var connection = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "1234",
-    database: "mydb"
+    password: "Sarat123",
+    database: "userlogin"
 });
 
 router.get('/', function(req, res, next) {
     res.render('index', { title: 'Kiel Services Web Application' });
 });
-
-router.get('/contactUs', function(req, res, next) {
-    res.render('contactUs', {title: 'Kiel Services Web Application'})
-
-})
 /* GET home page. */
 router.get('/login', function(req, res, next) {
     res.render('login', { title: 'Kiel Services Web Application' });
@@ -30,12 +25,8 @@ router.get('/forgotpassword', function(req, res, next) {
 });
 
 router.post('/loginOld', function(req, res, next) {
-
     res.render('forgotpassword', { title: 'Kiel Services Web Application' });
 });
-
-
-
 
 
 router.use(passport.initialize());
@@ -73,7 +64,7 @@ passport.use(new LocalStrategy(function(username, password, done) {
     console.log("user name value: "+ username);
     console.log("password value: "+ password);
 
-    con.query('SELECT * FROM tbl_user WHERE username = ? and password = ?', [username, password],function(err,rows){
+    connection.query('SELECT * FROM users WHERE username = ? and password = ?', [username, password],function(err,rows){
         if(err) {
             console.log('There is an error');
             throw err;
@@ -96,6 +87,33 @@ passport.use(new LocalStrategy(function(username, password, done) {
 
 }));
 
+
+
+
+router.post('/signup',function(req,res){
+    connection.query("select * from  users where email = '"+req.body.email+"'",function(err,rows) {
+        numRows = rows.length;
+        console.log(numRows);
+        if (err)
+            return done(err);
+        if (numRows == '1') {
+            res.end('done');
+        }
+        else {
+            var queryString = "insert into users(username,name,dob,email,password) values('" + req.body.username + "','" + req.body.name + "','" + req.body.dob + "','" + req.body.email + "','" + req.body.pass + "')";
+            console.log(queryString);
+            connection.query(queryString, function (error, results) {
+                if (error) {
+                    throw error;
+                }
+                else {
+                    res.end('success');
+                }
+            });
+        }
+    });
+});
+
 passport.serializeUser(function(user, done) {
     done(null, user);
 });
@@ -114,4 +132,3 @@ router.get('/about', function(req, res, next) {
 
 
 module.exports = router;
-

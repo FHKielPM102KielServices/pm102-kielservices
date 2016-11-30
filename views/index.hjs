@@ -1,150 +1,161 @@
-<!DOCTYPE html>
 <html>
 <head>
   <title>KIEL SERVICES</title>
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-  <link href="./stylesheets/mainStyle.css" rel="stylesheet" type="text/css" />
-  <script src="./contactUsvalidate.js"></script>
+  <link rel='stylesheet' href='./stylesheets/mainStyle.css' />
+  <style>
+    #tech-slideshow {
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+    }
+    #tech-slideshow > div {
+      height: 200px;
+      width: 2526px;
+      background: url(./images/collage.jpg);
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+
+      -moz-transition:  opacity 0.5s ease-out;
+      -o-transition: opacity 0.5s ease-out;
+      -webkit-transition: opacity 0.5s ease-out;
+      -ms-transition: opacity 0.5s ease-out;
+
+      /* Slow */
+      -webkit-animation: moveSlideshow 60s linear infinite;
+      -moz-animation:    moveSlideshow 60s linear infinite;
+
+      -webkit-transform: translate3d(0,0,0); /* Performance */
+
+    }
+    #tech-slideshow #tech-slideshow-1 {
+      /* Sprite */
+      background-position: 0 200px;
+
+      /* Fast */
+      -webkit-animation: moveSlideshow 20s linear infinite;
+      -moz-animation:    moveSlideshow 20s linear infinite;
+    }
+    #tech-slideshow:hover #tech-slideshow-2 {
+      opacity: 0;
+    }
+
+    @-webkit-keyframes moveSlideshow {
+      0%   {
+        -webkit-transform: translateX(0);
+        -moz-transform:    translateX(0);
+        -ms-transform:     translateX(0);
+        -o-transform:      translateX(0);
+        transform:         translateX(0);
+      }
+      100% {
+        -webkit-transform: translateX(-1684px);
+        -moz-transform:    translateX(-1684px);
+        -ms-transform:     translateX(-1684px);
+        -o-transform:      translateX(-1684px);
+        transform:         translateX(-1684px);
+      }
+    }
+    @-moz-keyframes moveSlideshow {
+      0%   {
+        -webkit-transform: translateX(0);
+        -moz-transform:    translateX(0);
+        -ms-transform:     translateX(0);
+        -o-transform:      translateX(0);
+        transform:         translateX(0);
+      }
+      100% {
+        -webkit-transform: translateX(-1684px);
+        -moz-transform:    translateX(-1684px);
+        -ms-transform:     translateX(-1684px);
+        -o-transform:      translateX(-1684px);
+        transform:         translateX(-1684px);
+      }
+    }
+  </style>
 </head>
 <body>
-  <div id="topPanel">
-    <ul>
-      <li><a href="login">LOGIN/SIGNUP</a></li>
-      <li><a href="/contactUs">CONTACT</a></li>
-      <li><a href="">SERVICES</a></li>
-      <li><a href="">ABOUT US</a></li>
-      <li class="active">Home</li>
-    </ul>
-    <a href=""><img src="./images/logo.PNG" title="Kiel Services" alt="Kiel Services" width="100" height="150" border="0" /></a>
+<div id="topPanel">
+  <ul>
+    <li><a href="login">LOGIN/SIGNUP</a></li>
+    <li><a href="">CONTACT</a></li>
+    <li><a href="">SERVICES</a></li>
+    <li><a href="about">ABOUT US</a></li>
+    <li class="active">Home</li>
+  </ul>
+  <a href=""><img src="./images/logo.PNG" title="Kiel Services" alt="Kiel Services" width="100" height="150" border="0" /></a>
+
   <div id="headerPanelfast">
-    <br>
-      <h2>KIEL</h2>
-      <p>Lorem Ipsum is simply try's standard dummy text ever since the 1500s,Lorem Ipsimply try's </p>
-      <a href="">&nbsp;</a>
-      </div>
-    <div id="headerPanelfast">
-      <h2>KIEL</h2>
-      <p>Lorem Ipsum is simply try's standard dummy text ever since the 1500s,Lorem Ipsimply try's </p>
-      <a href="">&nbsp;</a>
-    </div>
-    <div id="headerPanelsecond">
-      <h2>VIEWS</h2>
-      <p>Lorem Ipsum is simply try's standard dummy text ever since the 1500s,Lorem Ipsimply try's </p>
-      <a href="">&nbsp;</a>
-      </div>
-    <div id="headerPanelthird">
-      <h2>services</h2>
-      <p>Lorem Ipsum is simply try's standard dummy text ever since the 1500s,Lorem Ipsimply try's </p>
-      <a href="">&nbsp;</a>
-      </div>
+    <h2>KIEL</h2>
+    <p>Introduction to Kiel</p>
+    <a href="">&nbsp;</a>
+  </div>
+  <div id="headerPanelsecond">
+    <h2>VIEWS</h2>
+    <p>Attractions of Kiel</p>
+    <a href="">&nbsp;</a>
+  </div>
+  <div id="headerPanelthird">
+    <h2>services</h2>
+    <p>Services Provided  by us for Easy Day to Day Activities</p>
+    <a href="">&nbsp;</a>
+  </div>
+</div>
+<div id="bodyPanel">
+  <h2>VISION </h2>
+  <p>Welcome to the <span>{{ title }}</span> which provides all services in a single platform with an effective way for everyone in kiel as well as international persons. With the reference will provide an executive way of the platform and then provide the services </p>
+  <p class="dotline"><img src="/images/images/blank.gif" alt="" width="1" height="1" /></p>
+  <p class="capstext">The best way to find yourself is to lose yourself in the service of others. </p>
+  <p class="dotline"><img src="/images/images/blank.gif" alt="" width="1" height="1" /></p>
+  <!--<p class="more"><a href="">More</a></p>-->
+  <h3>Quote Of the Day</h3>
+  <h4>Benefits</h4>
+  <ul>
+    <li><span>Updates in current city</span></li>
+    <li><span>Weather Updates</span></li>
+    <li><span>Events for students</span></li>
+    <li><span>Entertainments </span></li>
+    <li><span>Standard dummy text ever </span></li>
+    <li><span>Since the 1500s, when an</span></li>
+    <!--<li>Unknown printer took a galley</li>-->
+  </ul>
+  <div id="testimonial">
+    <p><span>The best way to find yourself is to lose yourself in the service of others.</span></p>
+    <p class="moretwo"><a href="">More</a></p>
+  </div>
+</div>
+
+<div id="page-wrap">
+
+  <div id="tech-slideshow">
+    <div id="tech-slideshow-1"></div>
+    <div id="tech-slideshow-2"></div>
   </div>
 
-    <!-- Services -->
-    <section id="services" class="">
-      <div class="">
-          <div class="">
-              <h2>Services</h2>
-              <hr class="">
-              <div class="">
-                  <div class="">
-                      <span class="">
-                      <i class=""></i>
-                      </span>
-                      <h4><strong>Hospitals</strong></h4>
-                      </br>
-                      <a href="" class="">Search</a>
-                  </div>
-                  <div class="">
-                      <span class="">
-                      <i class=""></i>
-                      </span>
-                      <h4><strong>Restaurants</strong></h4>
-                      </br>
-                      <a href="" class="">Search</a>
-                  </div>
-                  <div class="">
-                      <span class="">
-                      <i class=""></i>
-                      </span>
-                      <h4><strong>Supermarkets</strong></h4>
-                      </br>
-                      <a href="" class="">Search</a>
-                  </div>
-                  </div>
-                  <div class="">
-                      <span class="">
-                      <i class=""></i>
-                      </span>
-                      <h4><strong>Entertainments</strong></h4>
-                      </br>
-                      <a href="" class="">Search</a>
-                  </div>
-                  <div class="">
-                      <span class="">
-                      <i class=""></i>
-                      </span>
-                      <h4><strong>Dormitories</strong></h4>
-                      </br>
-                      <a href="" class="">Search</a>
-                  </div>
-                  <div class="">
-                      <span class="">
-                      <i class=""></i>
-                      </span>
-                      <h4><strong>Malls</strong></h4>
-                      </br>
-                      <a href="" class="">Search</a>
-                  </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-      </div>
-      </div>
-    </section>
-
-    <div id="bodyPanel">
-    <h2>VISION </h2>
-    <p>Welcome to the <span>{{ title }}</span> Provide all the services in single platform with an effective ay for the new persons in kiel as well as international persons. With the reference will provide an executive way of the platform and then provide the services </p>
-    <p class="dotline"><img src="./images/blank.gif" alt="" width="1" height="1" /></p>
-    <p class="capstext">The best way to find yourself is to lose yourself in the service of others. </p>
-    <p class="dotline"><img src="./images/blank.gif" alt="" width="1" height="1" /></p>
-    <!--<p class="more"><a href="">More</a></p>-->
-    <h3>Quote Of the Day</h3>
-    <h4>Benefits</h4>
+  <!--  <p>AND it speeds up  is just too big.</p>
+    -->
+</div>
+<div id="footerPanel">
+  <div id="footerbodyPanel">
     <ul>
-      <li><span>Updates in current city</span></li>
-      <li><span>Weather Updates</span></li>
-      <li><span>Events for students</span></li>
-      <li><span>Entertainments </span></li>
-      <!--<li><span>Standard dummy text ever </span></li>-->
-      <!--<li><span>Since the 1500s, when an</span></li>-->
-      <!--<li>Unknown printer took a galley</li>-->
+      <li><a href="">Home</a>|</li>
+      <li><a href="">About us</a> |</li>
+      <li><a href="">Support</a>|</li>
+      <li><a href="login">Login</a> |</li>
+      <li><a href="about">About us</a></li>
     </ul>
-    <div id="testimonial">
-      <p><span>The best way to find yourself is to lose yourself in the service of others.</p>
-      <p class="moretwo"><a href="">More</a></p>
-    </div>
-  </div>
+    <p class="copyright">CopyRight © Kiel services all right reserved</p>
+    <ul class="templateworld">
+      <li>Design By:</li>
+      <li><a href="">MIE_TEAM</a></li>
+    </ul>
+    <!-- <div id=""><a href="">KIEL SERVICES</a></div> -->
+    <div id="footercssPanel"><a href="">KIEL</a>
 
-  <div id="footerPanel">
-    <div id="footerbodyPanel">
-      <ul>
-        <li><a href="">Home</a>|</li>
-        <li><a href="">About us</a> |</li>
-        <li><a href="">Support</a>|</li>
-        <li><a href="">Clients</a> |</li>
-        <li><a href="/contactUs">Contact</a></li>
-      </ul>
-      <p class="copyright">CopyRight © Kiel services all right reserved</p>
-      <ul class="templateworld">
-        <li>Design By:</li>
-        <li><a href="">MIE_TEAM</a></li>
-      </ul>
-      <!-- <div id=""><a href="">KIEL SERVICES</a></div> -->
-      <div id="footercssPanel"><a href="">KS</a></div>
     </div>
   </div>
+</div>
 </body>
 </html>
-

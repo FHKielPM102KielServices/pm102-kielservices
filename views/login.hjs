@@ -1,10 +1,96 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link href="./stylesheets/demo1.css" rel="stylesheet"></link>
+  <title>KIEL SERVICES</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link href="./stylesheets/demo1.css" rel="stylesheet"></link>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<style>
+    #tech-slideshow {
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+    }
+    #tech-slideshow > div {
+      height: 200px;
+      width: 2526px;
+      background: url(./images/collage.jpg);
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
 
+      -moz-transition:  opacity 0.5s ease-out;
+      -o-transition: opacity 0.5s ease-out;
+      -webkit-transition: opacity 0.5s ease-out;
+      -ms-transition: opacity 0.5s ease-out;
+
+      /* Slow */
+      -webkit-animation: moveSlideshow 60s linear infinite;
+      -moz-animation:    moveSlideshow 60s linear infinite;
+
+      -webkit-transform: translate3d(0,0,0); / Performance /
+
+    }
+    #tech-slideshow #tech-slideshow-1 {
+      /* Sprite */
+      background-position: 0 200px;
+
+      /* Fast */
+      -webkit-animation: moveSlideshow 20s linear infinite;
+      -moz-animation:    moveSlideshow 20s linear infinite;
+    }
+    #tech-slideshow:hover #tech-slideshow-2 {
+      opacity: 0;
+    }
+
+    @-webkit-keyframes moveSlideshow {
+      0%   {
+        -webkit-transform: translateX(0);
+        -moz-transform:    translateX(0);
+        -ms-transform:     translateX(0);
+        -o-transform:      translateX(0);
+        transform:         translateX(0);
+      }
+      100% {
+        -webkit-transform: translateX(-1684px);
+        -moz-transform:    translateX(-1684px);
+        -ms-transform:     translateX(-1684px);
+        -o-transform:      translateX(-1684px);
+        transform:         translateX(-1684px);
+      }
+    }
+    @-moz-keyframes moveSlideshow {
+      0%   {
+        -webkit-transform: translateX(0);
+        -moz-transform:    translateX(0);
+        -ms-transform:     translateX(0);
+        -o-transform:      translateX(0);
+        transform:         translateX(0);
+      }
+      100% {
+        -webkit-transform: translateX(-1684px);
+        -moz-transform:    translateX(-1684px);
+        -ms-transform:     translateX(-1684px);
+        -o-transform:      translateX(-1684px);
+        transform:         translateX(-1684px);
+      }
+    }
+  </style>
 </head>
+
 <body>
+
+<div id="topPanel">
+  <ul>
+    <li><a href="login">LOGIN/SIGNUP</a></li>
+    <li><a href="">CONTACT</a></li>
+    <li><a href="">SERVICES</a></li>
+    <li><a href="about">ABOUT US</a></li>
+    <li class="active">Home</li>
+  </ul>
+  <a href=""><img src="./images/logo.PNG" title="Kiel Services" alt="Kiel Services" width="100" height="150" border="0" /></a>
+</div>
 <!-- <h2>Modal Login Form</h2>
  -->
 <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
@@ -31,13 +117,13 @@
 
         <div class="container" style="background-color:#f1f1f1">
             <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-            <span class="psw">Forgot <a href="forgotpassword">password</a><a href="#">?</a></span></div>
+            <span class="psw"><a href="forgotpassword">Forgot password</a><a href="#">?</a></span></div>
     </form>
 </div>
 
 <div id="id02" class="modal">
 
-    <form class="modal-content animate" action="">
+    <form class="modal-content animate">
         <div class="imgcontainer">
             <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
 
@@ -45,29 +131,21 @@
 
         <div class="container">
             <label><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="uname" required>
+            <input type="text" id="username" placeholder="Enter Username" name="uname" required>
 
             <label><b>Name</b></label>
-            <input type="text" placeholder="Enter name" name="name" required><br>
-
-            <label><b>Gender</b></label><br>
-            <input type="radio" name="gender" value="male" checked> Male
-            <input type="radio" name="gender" value="female"> Female<br>
+            <input type="text" id="name" placeholder="Enter name" name="name" required><br>
 
             <label><b>Date of Birth</b></label>
-            <input type="date" placeholder="Enter Date of Birth" name="dob" id="DoB" required><br>
+            <input type="date" id="dob" placeholder="Enter Date of Birth" name="dob" required><br>
 
             <label><b>Email</b></label>
-            <input type="text" placeholder="Enter Email" name="email" id="Email" required>
+            <input type="text" id="email" placeholder="Enter Email" name="email" id="Email" required>
 
             <label><b>Enter New Password</b></label>
-            <input type="password" placeholder="Enter Password" name="pswd1" id="password1" required>
+            <input type="password" id="pass" placeholder="Enter Password" name="pswd1" required>
 
-            <label><b>Re-Enter New Password</b></label>
-            <input type="password" placeholder="Enter Password" name="pswd2" id="password2" required>
-
-
-            <button type="submit">SignUp</button>
+            <button type="submit" id="nsignup">SignUp</button>
             <input type="checkbox" checked="checked"> Remember me
         </div>
 
@@ -80,16 +158,62 @@
 
 
 <script>
-    // Get the modal
-    var modal = document.getElementById('id01','id02');
+    $(document).ready(function(){
+        $("#signup").click(function(){
+         var  name = $("#name").val();
+          var  username = $("#username").val();
+           var dob = $("#dob").val();
+           var email=$("#email").val();
+           var pass=$("#pass").val();
 
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
+            /*
+             * Perform some validation here.
+             */
+            $.post("/signup",{name:name,username:username,dob:dob,email:email,pass:pass},function(data){
+                if(data==='done')
+                {
+                    window.location.href="http://localhost:3000/index";
+                }
+                else {
+                    window.location.href="http://localhost:3000/login";
+                }
+            });
+    });
+    });
 </script>
 
-</body>
+
+
+  <div id="page-wrap">
+
+
+    <div id="tech-slideshow">
+      <div id="tech-slideshow-1"></div>
+      <div id="tech-slideshow-2"></div>
+    </div>
+
+    <!--  <p>AND it speeds up  is just too big.</p>
+      -->
+  </div>
+  <div id="footerPanel">
+    <div id="footerbodyPanel">
+      <ul>
+        <li><a href="index">Home</a>|</li>
+        <li><a href="">About us</a> |</li>
+        <li><a href="">Support</a>|</li>
+        <li><a href="login">Login</a> |</li>
+        <li><a href="">Contact</a></li>
+      </ul>
+      <p class="copyright">CopyRight © Kiel services all right reserved</p>
+      <ul class="templateworld">
+        <li>Design By:</li>
+        <li><a href="">MIE_TEAM</a></li>
+      </ul>
+      <!-- <div id=""><a href="">KIEL SERVICES</a></div> -->
+      <div id="footercssPanel"><a href="">KIEL</a>
+
+      </div>
+    </div>
+  </div>
+  </body>
 </html>
