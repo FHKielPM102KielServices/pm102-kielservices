@@ -38,6 +38,71 @@
       <a href="">&nbsp;</a>
       </div>
   </div>
+
+    <!-- Services -->
+    <section id="services" class="">
+      <div class="">
+          <div class="">
+              <h2>Services</h2>
+              <hr class="">
+              <div class="">
+                  <div class="">
+                      <span class="">
+                      <i class=""></i>
+                      </span>
+                      <h4><strong>Hospitals</strong></h4>
+                      </br>
+                      <a href="" class="">Search</a>
+                  </div>
+                  <div class="">
+                      <span class="">
+                      <i class=""></i>
+                      </span>
+                      <h4><strong>Restaurants</strong></h4>
+                      </br>
+                      <a href="" class="">Search</a>
+                  </div>
+                  <div class="">
+                      <span class="">
+                      <i class=""></i>
+                      </span>
+                      <h4><strong>Supermarkets</strong></h4>
+                      </br>
+                      <a href="" class="">Search</a>
+                  </div>
+                  </div>
+                  <div class="">
+                      <span class="">
+                      <i class=""></i>
+                      </span>
+                      <h4><strong>Entertainments</strong></h4>
+                      </br>
+                      <a href="" class="">Search</a>
+                  </div>
+                  <div class="">
+                      <span class="">
+                      <i class=""></i>
+                      </span>
+                      <h4><strong>Dormitories</strong></h4>
+                      </br>
+                      <a href="" class="">Search</a>
+                  </div>
+                  <div class="">
+                      <span class="">
+                      <i class=""></i>
+                      </span>
+                      <h4><strong>Malls</strong></h4>
+                      </br>
+                      <a href="" class="">Search</a>
+                  </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      </div>
+      </div>
+    </section>
+
     <div id="bodyPanel">
     <h2>VISION </h2>
     <p>Welcome to the <span>{{ title }}</span> Provide all the services in single platform with an effective ay for the new persons in kiel as well as international persons. With the reference will provide an executive way of the platform and then provide the services </p>
