@@ -9,7 +9,7 @@ var router = express.Router();
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "1234",
+    password: "",
     database: "mydb"
 });
 
@@ -30,6 +30,10 @@ router.get('/forgotpassword', function(req, res, next) {
 router.post('/loginOld', function(req, res, next) {
 
     res.render('forgotpassword', { title: 'Kiel Services Web Application' });
+});
+
+router.get('/chat_box', function(req, res, next) {
+    res.render('chat_box', { title: 'Kiel Services Web Application'});
 });
 
 router.use(passport.initialize());

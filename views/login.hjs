@@ -76,9 +76,9 @@
                             <label><b>Name</b></label>
                             <input type="text" class="form-control" placeholder="Enter name" name="name" required><br>
 
-                            <label><b>Gender</b></label><br>
+                            <!--<label><b>Gender</b></label><br>
                             <input type="radio" name="gender" value="male" checked> Male
-                            <input type="radio" name="gender" value="female"> Female<br>
+                            <input type="radio" name="gender" value="female"> Female<br> -->
 
                             <label><b>Date of Birth</b></label>
                             <input type="date" class="form-control" placeholder="Enter Date of Birth" name="dob" id="DoB" required><br>
