@@ -1,25 +1,23 @@
 var express = require('express');
+var router = express.Router();
 var passport = require('passport');
+var nodemailer = require('nodemailer');
 var LocalStrategy = require('passport-local').Strategy;
 var mysql = require("mysql");
-// var $ = require("jquery")("/header.hjs");
-var router = express.Router();
 
-// First you need to create a connection to the db
-var con = mysql.createConnection({
+
+//  First you need to create a connection to the db
+var connection = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "",
-    database: "mydb"
+    password: "Sarat123",
+    database: "userlogin"
 });
 
 router.get('/', function(req, res, next) {
     res.render('index', { title: 'Kiel Services Web Application' });
 });
-
-//Login
-
-// var ht = $('#loadContent').load('page1.html');
+/* GET home page. */
 router.get('/login', function(req, res, next) {
     res.render('login', { title: 'Kiel Services Web Application'});
 });
@@ -52,9 +50,10 @@ router.post('/login', function(req, res, next) {
     //3 Redirect if user success
 
     passport.authenticate('local', function(err, user, info) {
-        if (err) return next(err)
+        if (err)
+            return next(err)
         if (!user) {
-            return res.redirect('/login')
+            return res.redirect('/login');
         }
         req.logIn(user, function(err) {
             if (err) return next(err);
@@ -68,7 +67,7 @@ passport.use(new LocalStrategy(function(username, password, done) {
     console.log("user name value: "+ username);
     console.log("password value: "+ password);
 
-    con.query('SELECT * FROM tbl_user WHERE username = ? and password = ?', [username, password],function(err,rows){
+    connection.query('SELECT * FROM users WHERE username = ? and password = ?', [username, password],function(err,rows){
         if(err) {
             console.log('There is an error');
             throw err;
@@ -90,6 +89,30 @@ passport.use(new LocalStrategy(function(username, password, done) {
     });
 
 }));
+
+router.post('/signup',function(req,res){
+    connection.query("select * from  users where email = '"+req.body.email+"'",function(err,rows) {
+        numRows = rows.length;
+        console.log(numRows);
+        if (err)
+            return done(err);
+        if (numRows == '1') {
+            res.end('done');
+        }
+        else {
+            var queryString = "insert into users(username,name,dob,email,password) values('" + req.body.username + "','" + req.body.name + "','" + req.body.dob + "','" + req.body.email + "','" + req.body.pass + "')";
+            console.log(queryString);
+            connection.query(queryString, function (error, results) {
+                if (error) {
+                    throw error;
+                }
+                else {
+                    res.end('success');
+                }
+            });
+        }
+    });
+});
 
 passport.serializeUser(function(user, done) {
     done(null, user);
