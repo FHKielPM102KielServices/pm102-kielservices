@@ -12,7 +12,7 @@
     <div id= "messageArea" class="row">
       <div class="col-md-4">
         <div class="well">
-            <h3>Online Users </h3>
+            <h3>Online chat Box </h3>
                <ul class="list-group" id="Users"></ul>
          </div>
       </div>
@@ -53,6 +53,16 @@ $(function(){
 
 });
 </script>
+
+<div class="panel-footer">
+                    <div class="input-group">
+                        <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                        <span class="input-group-btn">
+                            <button class="btn btn-warning btn-sm" id="btn-chat">
+                                Send</button>
+                        </span>
+                    </div>
+                </div>
 
 </body>
 </html>
