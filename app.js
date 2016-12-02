@@ -47,5 +47,9 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
 
 module.exports = app;

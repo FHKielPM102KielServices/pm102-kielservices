@@ -71,30 +71,24 @@
                     <form action="">
                         <div class="form-group well">
                             <label><b>Username</b></label>
-                            <input type="text" class="form-control" placeholder="Enter Username" name="uname" required>
+                            <input type="text" class="form-control" id="username" placeholder="Enter Username" name="uname" required>
 
                             <label><b>Name</b></label>
                             <input type="text" class="form-control" placeholder="Enter name" name="name" required><br>
 
-                            <label><b>Gender</b></label><br>
-                            <input type="radio" name="gender" value="male" checked> Male
-                            <input type="radio" name="gender" value="female"> Female<br>
+                            <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" required><br>
 
                             <label><b>Date of Birth</b></label>
-                            <input type="date" class="form-control" placeholder="Enter Date of Birth" name="dob" id="DoB" required><br>
+                            <input type="date" class="form-control" id="dob" placeholder="Enter Date of Birth" name="dob" id="DoB" required><br>
 
                             <label><b>Email</b></label>
-                            <input type="email" class="form-control" placeholder="Enter Email" name="email" id="Email" required>
+                            <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" id="Email" required>
 
-                            <label><b>Enter New Password</b></label>
-                            <input type="password" class="form-control" placeholder="Enter Password" name="pswd1" id="password1" required>
+                            <label><b>Enter Password</b></label>
+                            <input type="password" class="form-control" id="pass" placeholder="Enter Password" name="pswd1" id="password1" required>
 
-                            <label><b>Re-Enter New Password</b></label>
-                            <input type="password" class="form-control" placeholder="Enter Password" name="pswd2" id="password2" required>
-
-
-                            <input type="submit" class="btn btn-dark btn-lg" value="SignUp">
-                            <input type="button" class="btn btn-dark btn-lg" value="Cancel" onclick="document.getElementById('id01').style.display='none'"
+                            <input type="submit" class="btn btn-dark btn-lg" id="signup" value="SignUp">
+                            <input type="button" class="btn btn-dark btn-lg" id="cancel" value="Cancel" onclick="document.getElementById('id01').style.display='none'"
                                 class="cancelbtn">
                             <input type="checkbox" checked="checked">Remember me</input>
                         </div>
@@ -106,7 +100,32 @@
             </div>
         </div>
 
-    <script>
+<script>
+    $(document).ready(function(){
+        $("#signup").click(function(){
+         var  name = $("#name").val();
+          var  username = $("#username").val();
+           var dob = $("#dob").val();
+           var email=$("#email").val();
+           var pass=$("#pass").val();
+
+            /*
+             * Perform some validation here.
+             */
+            $.post("/signup",{name:name,username:username,dob:dob,email:email,pass:pass},function(data){
+                if(data==='done')
+                {
+                    window.location.href="http://localhost:3000/index";
+                }
+                else {
+                    window.location.href="http://localhost:3000/login";
+                }
+            });
+    });
+    });
+</script>
+
+<!--    <script>
         // Get the modal
         var modal = document.getElementById('id01','id02');
 
@@ -116,7 +135,7 @@
                 modal.style.display = "none";
             }
         }
-    </script>
+    </script> -->
 </body>
 
 </html>

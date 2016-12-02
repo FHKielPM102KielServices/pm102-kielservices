@@ -6,20 +6,16 @@
             height:500px;
         }
     </style>
-
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel='stylesheet' href='/stylesheets/placestyle.css' />
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_UOVJ2Fbk-TnFn2P8EN4KGc5ecfHErmg&libraries=places"
             type="text/javascript"></script>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript">
-
         var map;
         var infowindow;
         $(document).ready(function () {
             navigator.geolocation.getCurrentPosition(initialise);
-
         })
         function initialise(position) {
            //  var pyrmont = {lat: -33.867, lng: 151.195};
