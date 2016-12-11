@@ -3,7 +3,7 @@ var router = express.Router();
 var passport = require('passport');
 var nodemailer = require('nodemailer');
 var LocalStrategy = require('passport-local').Strategy;
-// var mysql = require("mysql");
+var session = require('express-session');
 var connection = require("./db");
 
 router.get('/', function(req, res, next) {
