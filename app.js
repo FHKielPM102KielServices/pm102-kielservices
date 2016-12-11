@@ -6,9 +6,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-// var users = require('./routes/users');
+var userDashboard = require('./routes/userDashboard');
 var ShowNearPlace = require('./routes/ShowNearPlace');
 var SubjectsList = require('./routes/SubjectsList');
+
+require('./routes/extensions.js');
 
 var app = express();
 
@@ -25,7 +27,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-// app.use('/users', users);
+app.use('/userDashboard', userDashboard);
 app.use('/ShowNearPlace', ShowNearPlace);
 app.use('/SubjectsList', SubjectsList);
 

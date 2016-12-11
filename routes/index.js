@@ -3,16 +3,8 @@ var router = express.Router();
 var passport = require('passport');
 var nodemailer = require('nodemailer');
 var LocalStrategy = require('passport-local').Strategy;
-var mysql = require("mysql");
-
-
-//  First you need to create a connection to the db
-var connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "Sarat123",
-    database: "userlogin"
-});
+// var mysql = require("mysql");
+var connection = require("./db");
 
 router.get('/', function(req, res, next) {
     res.render('index', { title: 'Kiel Services Web Application' });
