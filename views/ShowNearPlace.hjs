@@ -110,7 +110,7 @@
                    var linkuserview = document.createElement('a');
                    linkuserview.setAttribute('href','#');
                    var linkAddreview = document.createElement('a');
-                   linkAddreview.setAttribute('data-target','#signUpModal');
+                   linkAddreview.setAttribute('data-target','#AddReviewModal');
                    linkAddreview.setAttribute('class','nav-link');
                    linkAddreview.setAttribute('data-toggle','modal');
 
@@ -263,7 +263,7 @@
 
 
 
-    <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="AddReviewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">

@@ -3,7 +3,7 @@ var express = require('express');
 var router = express.Router();
 
 /* GET ShowNearPlace page. */
-var db = require('../db');
+var db = require('./db');
 var qres_row = {};
 var views ='';
 
