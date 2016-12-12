@@ -9,9 +9,14 @@
 <body>
 <h1>{{ title }}</h1>
 <ul>
-    <li><p><a href="/ShowNearPlace/hospital"> Hospital </a></p></li>
-    <li><p><a href="/ShowNearPlace/grocery_or_supermarket"> Market </a></p></li>
-    <li><p><a href="/ShowNearPlace/restaurant"> Restaurant </a></p></li>
+    <li><p><a href="/ShowNearPlace/show/hospital"> Hospital </a></p></li>
+    <li><p><a href="/ShowNearPlace/show/grocery_or_supermarket"> Market </a></p></li>
+    <li><p><a href="/ShowNearPlace/show/restaurant"> Restaurant </a></p></li>
+    <li><p><a href="/ShowNearPlace/show/pharmacy"> pharmacy </a></p></li>
+    <li><p><a href="/ShowNearPlace/show/bank"> bank </a></p></li>
+    <li><p><a href="/ShowNearPlace/show/school"> school </a></p></li>
+    <li><p><a href="/ShowNearPlace/show/library"> library </a></p></li>
+    <li><p><a href="/ShowNearPlace/show/cafe"> cafe </a></p></li>
 </ul>
 
 </body>
