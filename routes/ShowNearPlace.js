@@ -16,12 +16,12 @@ var views ='';
 
 
 
-router.get('/show/:subject', function(req, res) {
+router.get('/:subject', function(req, res) {
 
        res.render('ShowNearPlace', {subject: req.params.subject});
 });
 
-router.post('/Userview/:subject/:PlaceId', function(req, res, next) {
+router.post('/Userview/:PlaceId', function(req, res, next) {
 
     var palceid = req.params.PlaceId;
    var query = "SELECT * FROM userview where placeid = '" + palceid.toString()+"'";
@@ -52,7 +52,7 @@ router.post('/Userview/:subject/:PlaceId', function(req, res, next) {
 
 });
 
-router.post('/Addfavorite/:subject/:PlaceId', function(req, res, next) {
+router.post('/Addfavorite/:PlaceId', function(req, res, next) {
 
     var palceid = req.params.PlaceId;
     var usern= 'maryam';
@@ -66,4 +66,30 @@ router.post('/Addfavorite/:subject/:PlaceId', function(req, res, next) {
     });
 
 })
+router.post('/AddReview', function(req, res, next) {
+    var PId = req.body.PId;
+    var ReviewTextarea = req.body.ReviewTextarea;
+  //  sess = req.session;
+  //  sess.username = username;
+    console.log("PId: "+ PId);
+    console.log("ReviewTextarea value: "+ ReviewTextarea);
+    var uname = 'maryam';
+    var date = '2016-12-10'
+
+    var queryString = "insert into userview(username,Placeid,description,viewdate) values('" +uname+ "','" + PId + "','" + ReviewTextarea + "','" + date + "')";
+    console.log(queryString);
+    db.query(queryString, function (error, results) {
+        if (error) {
+            throw error;
+        }
+        else {
+            res.end('success');
+        }
+     //   else {
+       //     res.render('ShowNearPlace', {subject: req.params.subject});
+        //}
+
+    });
+
+});
 module.exports = router;
