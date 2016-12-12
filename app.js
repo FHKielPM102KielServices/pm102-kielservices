@@ -9,6 +9,8 @@ var index = require('./routes/index');
 var userDashboard = require('./routes/userDashboard');
 var ShowNearPlace = require('./routes/ShowNearPlace');
 var SubjectsList = require('./routes/SubjectsList');
+var Addreview = require('./routes/Addreview');
+
 
 require('./routes/extensions.js');
 
@@ -30,6 +32,7 @@ app.use('/', index);
 app.use('/userDashboard', userDashboard);
 app.use('/ShowNearPlace', ShowNearPlace);
 app.use('/SubjectsList', SubjectsList);
+app.use('/Addreview', Addreview);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
