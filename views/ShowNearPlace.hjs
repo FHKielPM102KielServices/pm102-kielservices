@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style type="text/css">
-        #map{
-            height:300px;
-        }
-    </style>
 
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel='stylesheet' href='/stylesheets/placestyle.css' />
@@ -264,14 +259,23 @@
     </script>
 </head>
 <body>
+
+
+<div id="title">
+
+
 <p>{{subject}}</p>
 
 
-<div id="map"  style="float: left;width: 100%"></div>
+</div>
+
+
+<div id="map"  >
+</div>
 <br>
-<div style="width: 100%">
+<div  id="content">
     <div style="float: left; width: 70%" >
-        <table cellspacing='0' id="places" width="80%">
+        <table cellspacing='0' id="places" width="90%">
             <tr><th  width="5%"></th><th  width="15%">Name</th><th  width="15%">Address</th><th width="15%">Tel</th><th width="5%">Opening Hours</th><th width="5%"></th><th width="5%"></th><th width="5%"></th></tr><!-- Table Header -->
 
 
@@ -279,7 +283,7 @@
     </div>
      <div style="float: left; width: 30%" id="review">
 
-       </div>
+     </div>
 </div>
 
 <br>
