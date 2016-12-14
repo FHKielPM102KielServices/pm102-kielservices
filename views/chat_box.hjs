@@ -1,68 +1,80 @@
 <!doctype html>
-<html>
-  <head>
-    <title>Socket.IO chat</title>
-<link rel="stylesheet" href="">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiel Service Chat Application</title>
+    <link href="./stylesheets/stylish-portfolio.css" rel="stylesheet">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link rel="stylesheet" type="text/css" href="css/chat.css">-->
 <script src="/socket.io/socket.io.js"></script>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
+    <style>
+    .chat-wrapper { height: 400px; }
+    .chat-wrapper .chat-rooms, .chat-wrapper .chat-text { height: 100%; border: 1px solid #eee; border-radius: 5px; }
+    .chat-wrapper .chat-rooms { padding: 0px; border-left: 0px; border-bottom-left-radius: 0px; border-top-left-radius: 0px; }
+    .chat-wrapper .chat-rooms ul { padding: 0px; list-style: none; margin: 10px 0 0 0; }
+    .chat-wrapper .chat-rooms li { list-style: none; padding: 5px; cursor: pointer; }
+    .chat-wrapper .chat-rooms li.active { font-weight: bold; }
+    .chat-wrapper .chat-rooms li:hover { color: #fff; background-color: #428bca; }
+    .chat-wrapper .chat-text { border-bottom-right-radius: 0px; border-top-right-radius: 0px; padding: 15px;overflow-y: scroll; background: white;}
+    .chat-wrapper .chat-text .text-success { color: #29A52B;}
+    .chat-wrapper #chat-text { padding: 10px 0; overflow-y: scroll; height: 100%; word-wrap: break-word; }
+    .chat-input { margin-top: 10px; padding-left: 0px; }
+    .chat-input input { width: 70%; border-bottom-right-radius: 0px; border-top-right-radius: 0px; }
+    .chat-input .btn { border-left: 0px; border-bottom-left-radius: 0px; border-top-left-radius; }
+    </style>
 </head>
 <body>
-<div class="container">
-    <div id= "messageArea" class="row">
-      <div class="col-md-4">
-        <div class="well">
-            <h3>Online chat Box </h3>
-               <ul class="list-group" id="Users"></ul>
-         </div>
-      </div>
-
-      <div class="col-md-8">
-          <div class="chat" id="chat"></div>
-              <form id="messageForm">
-                  <div class="form-group">
-                      <!--<label>Enter Message</label>
-                      <textarea class="form-control" id="message"></textarea>
-                      <br />
-                      <input type="submit" value = "Send Message" name="">-->
-                      <div><textarea class="form-control" id="message"></textarea> &nbsp; <input type="submit" value="Send" name="s_say" /></div>
-                      <!-- <input id="m" autocomplete="off" /><button>Send</button> -->
-                  </div>
-              </form>
-          </div>
-      </div>
-</div>
+<header id="top" class="header">
+        <div class="col-lg-10 col-lg-offset-1">
+            <section id="main" class="container">
+                 <div class="form-group">
+                       <h1 class="page-header">Kiel Services Chat Application<br/><small></small></h1>
+                            <div class="row chat-wrapper">
+                                <div class='col-xs-6 col-md-9 chat-text'>
+                                       <div id="chat" class="">
+                                            <div id="conversation"></div>
+                                       </div>
+                                 </div>
+                                <div class="clearfix"></div>
+                                <div class='col-sx-10 col-md-12 chat-input'>
+                                <input id="data" type="text" class="form-control pull-left" placeholder="Type yor message here.." required3/>
+                                <button type="submit" id="datasend" class="btn btn-primary value = "Send" name="">Send</button>
+                            </div>
+                       </div>
+                 </div>
+            </section>
+        </div>
+</header>
 <script>
-$(function(){
-
     var socket = io.connect();
-    var $messageForm = $('#messageForm');
-    var $message = $('#message');
-    var $chat = $('#chat');
-
-    $messageForm.submit(function(e){
-      e.preventDefault();
-      console.log('submitted');
-      socket.emit('send message', $message.val());
-      $message.val('');
+    socket.on('connect', function(){
+        socket.emit('adduser', prompt("What's your name?"));
     });
-
-      socket.on('new message', function(data){
-          $chat.append('<div class="well">'+data.msg+'</div>');
-      })
-
-});
+    socket.on('updatechat', function (username, data) {
+        $('#conversation').append('<b>'+username + ':</b> ' + data + '<br>');
+    });
+    // on load of page
+    $(function(){
+        // when the client clicks SEND
+        $('#datasend').click( function() {
+            var message = $('#data').val();
+            $('#data').val('');
+            // tell server to execute 'sendchat' and send along one parameter
+            socket.emit('sendchat', message);
+        });
+        // when the client hits ENTER on their keyboard
+        $('#data').keypress(function(e) {
+            if(e.which == 13) {
+                $(this).blur();
+                $('#datasend').focus().click();
+            }
+        });
+    });
 </script>
 
-<div class="panel-footer">
-                    <div class="input-group">
-                        <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
-                        <span class="input-group-btn">
-                            <button class="btn btn-warning btn-sm" id="btn-chat">
-                                Send</button>
-                        </span>
-                    </div>
-                </div>
+
 
 </body>
 </html>
