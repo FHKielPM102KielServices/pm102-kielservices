@@ -25,7 +25,7 @@ router.get('/:subject', function(req, res) {
 router.post('/Userview/:PlaceId', function(req, res, next) {
 
     var palceid = req.params.PlaceId;
-   var query = "SELECT * FROM userview where placeid = '" + palceid.toString()+"'";
+   var query = "SELECT * FROM userview where placeid = '" + palceid.toString()+"' and confirm='1'";
 
    db.query(query, function(err, result) {
 

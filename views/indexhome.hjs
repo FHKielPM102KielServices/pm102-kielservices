@@ -70,7 +70,7 @@
                             </span>
                             <h4><strong>Restaurants</strong></h4>
                             </br>
-                            <a href="/ShowNearPlace/Restaurant" class="btn btn-dark">Search</a>
+                            <a href="/ShowNearPlace/restaurant" class="btn btn-dark">Search</a>
                         </div>
                         </div>
                         <div class="col-md-4 col-sm-6">
@@ -81,7 +81,7 @@
                             </span>
                             <h4><strong>Supermarkets</strong></h4>
                             </br>
-                            <a href="ShowNearPlace/Supermarket" class="btn btn-dark">Search</a>
+                            <a href="ShowNearPlace/grocery_or_supermarket" class="btn btn-dark">Search</a>
                         </div>
                         </div>
                         </div>
@@ -92,9 +92,9 @@
                             <i class="fa fa-circle fa-stack-2x"></i>
                             <i class="fa fa-gamepad fa-stack-1x text-primary"></i>
                             </span>
-                            <h4><strong>Entertainments</strong></h4>
+                            <h4><strong>library</strong></h4>
                             </br>
-                            <a href="login" class="btn btn-dark">Search</a>
+                            <a href="ShowNearPlace/library" class="btn btn-dark">Search</a>
                         </div>
                         </div>
                         <div class="col-md-4 col-sm-6">
@@ -103,9 +103,9 @@
                             <i class="fa fa-circle fa-stack-2x"></i>
                             <i class="fa fa-hotel fa-stack-1x text-primary"></i>
                             </span>
-                            <h4><strong>Dormitories</strong></h4>
+                            <h4><strong>cafe</strong></h4>
                             </br>
-                            <a href="" class="btn btn-dark">Search</a>
+                            <a href="ShowNearPlace/cafe" class="btn btn-dark">Search</a>
                         </div>
                         </div>
                         <div class="col-md-4 col-sm-6">
@@ -114,9 +114,9 @@
                             <i class="fa fa-circle fa-stack-2x"></i>
                             <i class="fa fa-shopping-bag fa-stack-1x text-primary"></i>
                             </span>
-                            <h4><strong>Malls</strong></h4>
+                            <h4><strong>pharmacy</strong></h4>
                             </br>
-                            <a href="" class="btn btn-dark">Search</a>
+                            <a href="ShowNearPlace/pharmacy" class="btn btn-dark">Search</a>
                         </div>
                         </div>
                         </div>
