@@ -2,12 +2,12 @@ $(document).ready(
 
     function () {
         //review grid
-        $("#jqGrid").jqGrid({
-            url: '/userDashboard/getReviews',
+        $("#adminReviewGrid").jqGrid({
+            url: '/adminDashboard/getReviews',
             mtype: "GET",
             datatype: "json",
             // we set the changes to be made at client side using predefined word clientArray
-            editurl: '/userDashboard/editReview',
+            editurl: '/adminDashboard/editReview',
             page: 1,
             colModel: [
                 {
@@ -37,12 +37,12 @@ $(document).ready(
             width: 780,
             height: 400,
             rowNum: 10,
-            pager: "#jqGridPager"
+            pager: "#adminReviewGridPager"
         });
 
-        $('#jqGrid').navGrid('#jqGridPager',
+        $('#adminReviewGrid').navGrid('#adminReviewGridPager',
             // the buttons to appear on the toolbar of the grid
-            { edit: true, add: false, del: true, search: false, refresh: false, view: false, position: "left", cloneToTop: false },
+            { edit: false, add: false, del: true, search: false, refresh: false, view: false, position: "left", cloneToTop: false },
             // options for the Edit Dialog
             {
                 editCaption: "The Edit Dialog",

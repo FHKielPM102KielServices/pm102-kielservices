@@ -7,7 +7,7 @@ router.get('/getReviews',
     function (req, res, next) {
         var reviews;
         db.query(
-            'select * from review',
+            'select * from userview',
             function (err, result) {
                 if (err)
                     throw err;
@@ -25,12 +25,12 @@ router.post('/editReview',
         var queryString;
         if (reqBody.oper == 'edit') {
             queryString =
-                "update review set description = '{0}' where id = {1}"
+                "update userview set description = '{0}' where id = {1}"
                     .format(reqBody.description, reqBody.id);
         }
         else if (reqBody.oper == 'del') {
             queryString =
-                "delete from review where id = {0}"
+                "delete from userview where id = {0}"
                     .format(reqBody.id);
         }
 
@@ -45,4 +45,6 @@ router.post('/editReview',
                 res.end('success');
         });
     });
+
+module.exports = router;
 

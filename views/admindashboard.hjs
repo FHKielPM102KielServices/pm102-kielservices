@@ -14,8 +14,7 @@
     <script src="./javascripts/grid.locale-en.js"></script>
     <script src="./javascripts/jquery.jqGrid.min.js"></script>
 
-    <script src="./javascripts/userProfile.js"></script>
-    <script src="./javascripts/userReview.js"></script>
+    <script src="./javascripts/adminReview.js"></script>
 </head>
 
 <body>
@@ -42,8 +41,8 @@
                                     <p>Admin Session: </p>
                                 </div>
                                 <div id="reviewTab" class="tab-pane">
-                                    <table id="jqGrid1" class="table table-striped"></table>
-                                    <div id="jqGridPager1"></div>
+                                    <table id="adminReviewGrid" class="table table-striped"></table>
+                                    <div id="adminReviewGridPager"></div>
                                 </div>
                             </div>
                         </div>
