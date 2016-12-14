@@ -76,7 +76,20 @@ router.get('/getReviews',
                 console.log('The solution is: ', result);
             });
     });
+router.get('/deleteReviews',
+    function (req, res, next) {
+        var reviews;
+        db.query(
+            'delete * from review where ID = {1}',
+            function (err, result) {
+                if (err)
+                    throw err;
 
+                reviews = result;
+                res.send(reviews);
+                console.log('The solution is: ', result);
+            });
+    });
 /* edit review */
 router.post('/editReview',
     function (req, res, next) {

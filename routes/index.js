@@ -13,6 +13,19 @@ router.get('/', function(req, res, next) {
 router.get('/login', function(req, res, next) {
     res.render('login', { title: 'Kiel Services Web Application' });
 });
+router.get('/admindashboard', function(req, res, next) {
+    console.log('test');
+  /*  connection.query('select * from  review',function(err,rows){
+        console.log('test');
+
+        res.render('admindashboard', { title: 'Kiel Services Web Application',result : rows});
+    });*/
+    //res.render('admindashboard', { title: 'Kiel Services Web Application'});
+
+    connection.query("select * from  review",function(err,rows) {
+        res.render('admindashboard', { title: 'Kiel Services Web Application',result:rows});
+    });
+});
 router.get('/forgotpassword', function(req, res, next) {
     res.render('forgotpassword', { title: 'Kiel Services Web Application' });
 });
