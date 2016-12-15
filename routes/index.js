@@ -31,22 +31,46 @@ var renderIndex = function (req, res, next) {
         title: 'Kiel Services Web Application',
         loginDisplay: loginDisplay,
         logoutDisplay: logoutDisplay,
-        adminDashboardDisplay: adminDashboardDisplay
+        adminDashboardDisplay: adminDashboardDisplay,
+        partials: {
+            headPartial: 'headPartial',
+            navBarPartial: 'navBarPartial'
+        }
     });
 }
 
 /* GET home page. */
 router.get('/login', function (req, res, next) {
-    res.render('login', { title: 'Kiel Services Web Application' });
+    res.render('login',
+        {
+            title: 'Kiel Services Web Application',
+            partials: {
+                headPartial: 'headPartial',
+                navBarPartial: 'navBarPartial'
+            }
+        });
 });
 router.get('/forgotpassword', function (req, res, next) {
-    res.render('forgotpassword', { title: 'Kiel Services Web Application' });
+    res.render('forgotpassword', {
+        title: 'Kiel Services Web Application',
+        partials: {
+            headPartial: 'headPartial',
+            navBarPartial: 'navBarPartial'
+        }
+    });
 });
 router.post('/loginOld', function (req, res, next) {
     res.render('forgotpassword', { title: 'Kiel Services Web Application' });
 });
 router.get('/contactUs', function (req, res, next) {
-    res.render('contactUs', { title: 'Kiel Services Web Application' });
+    res.render('contactUs',
+        {
+            title: 'Kiel Services Web Application',
+            partials: {
+                headPartial: 'headPartial',
+                navBarPartial: 'navBarPartial'
+            }
+        });
 });
 router.use(cookieParser());
 router.use(session({

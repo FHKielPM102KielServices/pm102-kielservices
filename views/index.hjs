@@ -3,46 +3,14 @@
 <head>
     <title>KIEL SERVICES</title>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-    <!-- Bootstrap -->
-    <link href="./stylesheets/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="./stylesheets/stylish-portfolio.css" rel="stylesheet">
-    <!-- Fonts -->
-    <link href="./font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    {{> headPartial}}
+
 </head>
 
 <body>
-    <!-- Navigation -->
-    <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
-    <nav id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
-            <li class="sidebar-brand" style="{{loginDisplay}}">
-                <a href="/login" onclick=$( "#menu-close").click();>Login/Sign Up</a>
-            </li>
-            <li class="sidebar-brand" style="{{logoutDisplay}}">
-                <a href="/logout">Logout</a>
-            </li>
-            <li>
-                <a href="#services" onclick=$( "#menu-close").click();>Services</a>
-            </li>
-            <li>
-                <a href="#chat" onclick=$( "#menu-close").click();>Chat</a>
-            </li>
-            <li style="{{logoutDisplay}}">
-                <a href="/userDashboard" onclick=$( "#menu-close").click();>User Dashboard</a>
-            </li>
-            <li style="{{adminDashboardDisplay}}">
-                <a href="/adminDashboard" onclick=$( "#menu-close").click();>Admin Dashboard</a>
-            </li>
-            <li>
-                <a href="#about" onclick=$( "#menu-close").click();>About</a>
-            </li>
-            <li>
-                <a href="/contactUs" onclick=$( "#menu-close").click();>Contact</a>
-            </li>
-        </ul>
-    </nav>
+
+    {{> navBarPartial}}
 
     <!-- Header -->
     <header id="top" class="header">
@@ -315,23 +283,9 @@
         </div>
         <a id="to-top" href="#top" class="btn btn-dark btn-lg"><i class="fa fa-chevron-up fa-fw fa-1x"></i></a>
     </footer>
-    <!-- jQuery -->
-    <script src="./javascripts/jquery.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="./javascripts/bootstrap.min.js"></script>
-    <!-- Custom Theme JavaScript -->
-    <script>
-            // Closes the sidebar menu
-            $("#menu-close").click(function(e) {
-                e.preventDefault();
-                $("#sidebar-wrapper").toggleClass("active");
-            });
-            // Opens the sidebar menu
-            $("#menu-toggle").click(function(e) {
-                e.preventDefault();
-                $("#sidebar-wrapper").toggleClass("active");
-            });
-        </script>
+
+
+
 </body>
 
 </html>

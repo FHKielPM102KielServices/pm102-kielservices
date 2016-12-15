@@ -5,7 +5,7 @@ var router = express.Router();
 var checkSession = function (req, res) {
     var result = true;
     sess = req.session;
-    if (req.session === undefined || !sess.username) {
+    if (sess === undefined || !sess.username) {
         result = false;
         res.redirect('/login');
     }
@@ -17,8 +17,16 @@ router.get('/', function (req, res, next) {
     if (!checkSession(req, res))
         return;
 
-    db.query("select * from  review", function (err, rows) {
-        res.render('adminDashboard', { title: 'Kiel Services Web Application', result: rows });
+    db.query("select * from  userview", function (err, rows) {
+        res.render('adminDashboard',
+            {
+                title: 'Kiel Services Web Application',
+                result: rows,
+                partials: {
+                    headPartial: 'headPartial',
+                    navBarPartial: 'navBarPartial'
+                }
+            });
     });
 });
 
