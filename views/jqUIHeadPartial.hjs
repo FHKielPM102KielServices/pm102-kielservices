@@ -1,0 +1,4 @@
+    <link href="./stylesheets/jquery-ui.css" rel="stylesheet">
+    <link href="./stylesheets/ui.jqgrid.css" rel="stylesheet">
+    <script src="./javascripts/grid.locale-en.js"></script>
+    <script src="./javascripts/jquery.jqGrid.min.js"></script>

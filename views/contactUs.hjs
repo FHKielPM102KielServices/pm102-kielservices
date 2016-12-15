@@ -2,50 +2,50 @@
 <html>
 
 <head>
-   <title>KIEL SERVICES</title>
-   <!--<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />-->
-   <!--<link href="./stylesheets/contactUsstyle.css" rel="stylesheet">-->
-   <!--<script src="contactUsvalidate.js"></script>-->
-   <link href="./stylesheets/bootstrap.min.css" rel="stylesheet">
-   <link href="./stylesheets/stylish-portfolio.css" rel="stylesheet">
-   <link href="./font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <title>KIEL SERVICES</title>
+
+    {{> headPartial}}
+
 </head>
 
 <body>
-   <header id="top" class="header">
-       <div class="container">
-           <div class="row text-center">
-               <div class="col-lg-10 col-lg-offset-1" style="text-align: left">
-                   <h2>CONTACT US</h2>
 
-                   <form action="//www.enformed.io/f95fo4w2" method="post" name="contact_form" id="contact_form">
-                       <div class="service-item">
-                           <div class="form-group well">
-                               <p>Have any questions?</p>
+    {{> navBarPartial}}
 
-                               <label><b>E-Mail</b></label>
-                               <input class="form-control" type="email" name="email" id="email" required>
-                               <label><b>Name</b></label>
-                               <input type="text" class="form-control" name="first_name" id="first_name" required>
-                               <br><br>
-                               <label for="comments">Message / Query</label>
-                               <br>
-                               <textarea name="comments" id="comments" rows="5" cols="60" required></textarea>
-                               <label id="lblError">&nbsp;</label><br/>
+    <header id="top" class="header">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-10 col-lg-offset-1" style="text-align: left">
+                    <h2>CONTACT US</h2>
 
-                               <!--<input class="btn btn-dark btn-lg" type="submit" id="_submit" value="Submit">-->
+                    <form action="//www.enformed.io/f95fo4w2" method="post" name="contact_form" id="contact_form">
+                        <div class="service-item">
+                            <div class="form-group well">
+                                <p>Have any questions?</p>
 
-                               <button type="submit" class="btn btn-dark btn-lg">Submit Me</button>
-                               <input class="btn btn-dark btn-lg" type="reset" id="reset" value="Reset Fields"><br>
+                                <label><b>E-Mail</b></label>
+                                <input class="form-control" type="email" name="email" id="email" required>
+                                <label><b>Name</b></label>
+                                <input type="text" class="form-control" name="first_name" id="first_name" required>
+                                <br><br>
+                                <label for="comments">Message / Query</label>
+                                <br>
+                                <textarea name="comments" id="comments" rows="5" cols="60" required></textarea>
+                                <label id="lblError">&nbsp;</label><br/>
 
-                           </div>
-                       </div>
-                   </form>
-               </div>
-           </div>
-       </div>
+                                <!--<input class="btn btn-dark btn-lg" type="submit" id="_submit" value="Submit">-->
 
-   </header>
+                                <button type="submit" class="btn btn-dark btn-lg">Submit Me</button>
+                                <input class="btn btn-dark btn-lg" type="reset" id="reset" value="Reset Fields"><br>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </header>
 </body>
 
 </html>

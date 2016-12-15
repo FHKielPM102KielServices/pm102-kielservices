@@ -32,6 +32,11 @@ router.get('/',
                     name: result[0].name,
                     dateOfBirth: result[0].dateOfBirth,
                     email: result[0].email,
+                    partials: {
+                        headPartial: 'headPartial',
+                        navBarPartial: 'navBarPartial',
+                        jqUIHeadPartial: 'jqUIHeadPartial'
+                    }
                 });
             });
     });

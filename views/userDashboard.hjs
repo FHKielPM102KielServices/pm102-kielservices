@@ -3,22 +3,21 @@
 
 <head>
     <title>{{ title }}</title>
-    <script src="./javascripts/jquery-3.1.1.min.js"></script>
-    <link href="./stylesheets/bootstrap.min.css" rel="stylesheet">
-    <link href="./stylesheets/bootstrap-theme.min.css" rel="stylesheet">
-    <script src="./javascripts/bootstrap.min.js" type="text/javascript"></script>
-    <link href="./stylesheets/stylish-portfolio.css" rel="stylesheet">
 
-    <link href="./stylesheets/jquery-ui.css" rel="stylesheet">
-    <link href="./stylesheets/ui.jqgrid.css" rel="stylesheet">
-    <script src="./javascripts/grid.locale-en.js"></script>
-    <script src="./javascripts/jquery.jqGrid.min.js"></script>
+    {{> headPartial}}
+
+    <link href="./stylesheets/bootstrap-theme.min.css" rel="stylesheet"> 
+    
+    {{> jqUIHeadPartial}}
 
     <script src="./javascripts/userProfile.js"></script>
     <script src="./javascripts/userReview.js"></script>
 </head>
 
 <body>
+
+    {{> navBarPartial}}
+
     <header id="top" class="header">
         <div class="main-container">
             <div class="col-lg-10 col-lg-offset-1">
