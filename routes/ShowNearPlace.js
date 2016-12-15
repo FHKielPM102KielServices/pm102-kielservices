@@ -19,12 +19,12 @@ router.get('/:subject', function(req, res) {
         res.render('ShowNearPlace', {subject: req.params.subject});
      }
     else
-       res.redirect('/login');
+      res.redirect('/login');
 });
 
-router.post('/Userview/:PlaceId', function(req, res, next) {
+router.post('/Userview', function(req, res, next) {
 
-    var palceid = req.params.PlaceId;
+    var palceid = req.body.placeid;
    var query = "SELECT * FROM userview where placeid = '" + palceid.toString()+"' and confirm='1'";
 
    db.query(query, function(err, result) {
@@ -53,9 +53,9 @@ router.post('/Userview/:PlaceId', function(req, res, next) {
 
 });
 
-router.post('/Addfavorite/:PlaceId', function(req, res, next) {
+router.post('/Addfavorite', function(req, res, next) {
 
-    var palceid = req.params.PlaceId;
+    var palceid = req.body.placeid;
     var usern= sess.username;
     var queryString = "insert into UserFavorites(username,Placeid) values('" +usern+ "','" + palceid + "')";
   //  console.log(queryString);
@@ -63,6 +63,25 @@ router.post('/Addfavorite/:PlaceId', function(req, res, next) {
         if (error) {
             throw error;
         }
+        else
+        {
+            var query = "SELECT * FROM places where placeid = '" + palceid.toString()+"'";
+
+                db.query(query, function(err, result) {
+                    if (err) throw err;
+                    if (result.length == 0 )
+                    {
+                        var queryString2 = "insert into places(Placeid,name,address,tel,openhour) values('" +palceid+ "','" + req.body.name + "','" + req.body.address + "','" + req.body.tel + "','" + req.body.openhour + "')";
+                        db.query(queryString2, function (error, results) {
+                            if (error) {
+                                throw error;
+                            }
+
+                        });
+                    }
+            });
+        }
+
 
     });
 
@@ -80,7 +99,23 @@ router.post('/AddReview', function(req, res, next) {
             throw error;
         }
         else {
-            res.end('success');
+
+            var query = "SELECT * FROM places where placeid = '" + PId.toString()+"'";
+
+            db.query(query, function(err, result) {
+                if (err) throw err;
+                if (result.length == 0) {
+                    var queryString2 = "insert into places(Placeid,name,address,tel,openhour) values('" + PId + "','" + req.body.name + "','" + req.body.address + "','" + req.body.tel + "','" + req.body.openhour + "')";
+                    db.query(queryString2, function (error, results) {
+                        if (error) {
+                            throw error;
+                        }
+                       // console.log('queryString2:' + queryString2);
+                    });
+
+                }
+                res.end('success');
+            });
         }
 
 

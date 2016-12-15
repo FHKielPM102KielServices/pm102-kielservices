@@ -2,7 +2,7 @@
 <html>
 <head>
 
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+
     <link rel='stylesheet' href='/stylesheets/placestyle.css' />
 
 
@@ -81,6 +81,7 @@
        //     placesList.innerHTML += '<tr class="even"><td><a href="'+place.website+'"><img width="25" src=  '+ place.photos[0].getUrl({'maxWidth': 200, 'maxHeight': 100})   +'></a> </td><td style="font-weight: bold;color: blue "><img width="10" src=  '+ place.icon    +'>&nbsp;&nbsp;' + place.name +'</td><td><a href="'+place.website+'">  '+ place.website    +'</a> </td><td> '+ place.vicinity  +' </td><td> '+ place.international_phone_number    +'</td><td> ' + place.opening_hours.periods[2].open.hours +' - ' + place.opening_hours.periods[2].close.hours   +'</td><td><a href="/ShowNearPlace/Userview/{{subject}}/'+place.place_id+'">  User Views</a></td><td><a href="#" class="favorite" id='+place.place_id+'> favorite</a></td></tr>';
 
                     var pid= place.place_id;
+                    var open = place.opening_hours.periods[2].open.hours +' - ' + place.opening_hours.periods[2].close.hours;
                    var results = document.getElementById('places');
                    var tr = document.createElement('tr');
 
@@ -117,6 +118,11 @@
                    linkAddreview.setAttribute('class','nav-link');
                    linkAddreview.setAttribute('data-toggle','modal');
                    linkAddreview.setAttribute('data-id',pid);
+                   linkAddreview.setAttribute('data-name',place.name);
+                   linkAddreview.setAttribute('data-address',place.vicinity);
+                   linkAddreview.setAttribute('data-tel',place.international_phone_number);
+                   linkAddreview.setAttribute('data-openhour',open);
+
 
               //     <a href="#" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-star-empty"></span> Add to Favorites</a>
 
@@ -161,14 +167,23 @@
 
                      $('a[data-toggle=modal]').click(function () {
 
-                       var data_id = '';
+                       var data_id ='';
+                        var date_name = '';
+                       date_name= $(this).data('name');
+
 
                        if (typeof $(this).data('id') !== 'undefined') {
 
                          data_id = $(this).data('id');
+
                        }
 
                        $('#PId').val(data_id);
+                       $('#pname').val(date_name);
+                       $('#ptel').val($(this).data('tel'));
+                       $('#paddress').val($(this).data('address'));
+                       $('#popen').val($(this).data('openhour'));
+
                      });
 
                      $(linkuserview).click(function()
@@ -183,7 +198,7 @@
 
                                    $.ajax({
                                    type: "POST",
-                                   url: "/ShowNearPlace/Userview/"+place.place_id,
+                                   url: "/ShowNearPlace/Userview",
                                    data: {placeid:place.place_id},
                                    cache: false,
 
@@ -227,8 +242,8 @@
                                    // $(this).fadeOut(300);
                                     $.ajax({
                                     type: "POST",
-                                    url: "/ShowNearPlace/Addfavorite/"+place.place_id,
-                                    data: dataString,
+                                    url: "/ShowNearPlace/Addfavorite",
+                                    data: {placeid:place.place_id,name:place.name,address:place.vicinity,tel:place.international_phone_number,openhour:open},
                                     cache: false,
 
                                     success: function(html)
@@ -298,13 +313,21 @@
                 <div class="modal-body">
                     <form id="f1" action="">
                          <input type="hidden" name="PId" id="PId" />
+                          <input type="hidden" name="paddress" id="paddress" />
+                           <input type="hidden" name="ptel" id="ptel" />
+
+                          <input type="hidden" name="popen" id="popen" />
+
 
                         <div class="form-group well">
 
                         <div  id="messages" class="hide"  role="alert">
                           <strong>Well done!</strong> You successfully send review .
                         </div>
-
+<br>
+                            <label><b>place</b></label>
+                            <input type="text" class="form-control" id="pname"  name="pname"  readonly>
+                            <br>
                             <label><b>Review</b></label>
 
                             <textarea class="form-control" id="ReviewTextarea" name="ReviewTextarea" rows="7"  placeholder="Enter Review" required></textarea>
@@ -328,8 +351,13 @@
         $("#Send").click(function(){
          var  PId = $("#PId").val();
           var  ReviewTextarea = $("#ReviewTextarea").val();
+           var  name = $("#pname").val();
+           var  address = $("#paddress").val();
+          var  tel = $("#ptel").val();
+           var  open = $("#popen").val();
+            $.post("/ShowNearPlace/AddReview",{PId:PId,ReviewTextarea:ReviewTextarea,name:name,address:address,tel:tel,openhour:open},function(data){
 
-            $.post("/ShowNearPlace/AddReview",{PId:PId,ReviewTextarea:ReviewTextarea},function(data){
+          //  $.post("/ShowNearPlace/AddReview",{PId:PId,ReviewTextarea:ReviewTextarea,name:name},function(data){
                 if(data==='success')
                 {
                     $('#messages').removeClass('hide').addClass('alert alert-success alert-dismissible').slideDown().show();
