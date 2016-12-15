@@ -16,61 +16,45 @@ var Addreview = require('./routes/Addreview');
 require('./routes/extensions.js');
 
 var app = express();
-// app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3000);
 
-// var httpServer = require('http').createServer(app);
-// var io = require('socket.io')(httpServer);
-// //var people = {};
-// //var usernames = {};
-// //connections = [];
-// var usernames = {};
+var httpServer = require('http').createServer(app);
+var io = require('socket.io')(httpServer);
+var usernames = {};
 
-// // rooms which are currently available in chat
-// var rooms = ['room1','room2','room3'];
-// //var people = {};
+// rooms which are currently available in chat
+//var rooms = ['room1','room2','room3'];
 
-// io.on('connection', function (socket) {
-// // when the client emits 'adduser', this listens and executes
-//     socket.on('adduser', function(username){
-//         // store the username in the socket session for this client
-//         socket.username = username;
-//         // store the room name in the socket session for this client
-//         socket.room = 'room1';
-//         // add the client's username to the global list
-//         usernames[username] = username;
-//         // send client to room 1
-//         socket.join('room1');
-//         // echo to client they've connected
-//         socket.emit('updatechat', 'KS_SERVER', 'you have connected to Kiel Services Administration');
-//         // echo to room 1 that a person has connected to their room
-//         socket.broadcast.to('room1').emit('updatechat', 'KS_SERVER', username + ' has connected to this room');
-//         socket.emit('updaterooms', rooms, 'room1');
-//     });
+io.on('connection', function (socket) {
+// when the client emits 'adduser', this listens and executes
+    socket.on('adduser', function(username){
+        socket.username = username;
+  //      socket.room = 'room1';
+        usernames[username] = username;
+    //    socket.join('room1');
+        socket.emit('updatechat', 'KS_SERVER', 'you have connected to Kiel Services Administration');
+        socket.broadcast.to('room1').emit('updatechat', 'KS_SERVER', username + ' has connected to this room');
+        socket.emit('updaterooms', rooms, 'room1');
+    });
+    // when the client emits 'sendchat', this listens and executes
+    socket.on('sendchat', function (data) {
+        io.sockets.in(socket.room).emit('updatechat', socket.username, data);
+    });
 
-//     // when the client emits 'sendchat', this listens and executes
-//     socket.on('sendchat', function (data) {
-//         // we tell the client to execute 'updatechat' with 2 parameters
-//         io.sockets.in(socket.room).emit('updatechat', socket.username, data);
-//     });
+    // when the user disconnects.. perform this
+    socket.on('disconnect', function(){
+        delete usernames[socket.username];
+        io.sockets.emit('updateusers', usernames);
+        socket.broadcast.emit('updatechat', 'SERVER', socket.username + ' has disconnected');
+        socket.leave(socket.room);
+    });
+});
 
-
-//     // when the user disconnects.. perform this
-//     socket.on('disconnect', function(){
-//         // remove the username from global usernames list
-//         delete usernames[socket.username];
-//         // update list of users in chat, client-side
-//         io.sockets.emit('updateusers', usernames);
-//         // echo globally that this client has left
-//         socket.broadcast.emit('updatechat', 'SERVER', socket.username + ' has disconnected');
-//         socket.leave(socket.room);
-//     });
-// });
-
-// httpServer.listen(app.get('port'), function() {
-//     console.log('Express server listening on port ' + app.get('port'));
-// });
+httpServer.listen(app.get('port'), function() {
+    console.log('Express server listening on port ' + app.get('port'));
+});
 //app.io = require('socket.io')();
-// view engine setup
+//view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hjs');
 app.set('partials',
