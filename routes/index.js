@@ -182,7 +182,20 @@ router.post('/forgotpassword', function (req, res) {
         }
     });
 });
-passport.serializeUser(function (user, done) {
+router.post('/contactUs',function(req,res){
+    var queryString = "insert into contact(EMAIL,NAME,MESSAGE) values('" + req.body.EMAIL + "','" + req.body.NAME + "','" + req.body.MESSAGE + "')";
+    console.log(queryString);
+    connection.query(queryString, function (error, results) {
+        if (error) {
+            throw error;
+        }
+        else {
+            res.end('success');
+        }
+    });
+});
+
+passport.serializeUser(function(user, done) {
     done(null, user);
 });
 passport.deserializeUser(function (id, done) {
