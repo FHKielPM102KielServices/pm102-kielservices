@@ -2,9 +2,23 @@ var express = require('express');
 var db = require("./db");
 var router = express.Router();
 
+var checkSession = function (req, res) {
+    var result = true;
+    sess = req.session;
+    if (req.session === undefined || !sess.username) {
+        result = false;
+        res.redirect('/login');
+    }
+
+    return result;
+}
+
 /* users profile info */
 router.get('/',
     function (req, res, next) {
+        if (!checkSession(req, res))
+            return;
+
         var users;
         //ToDo
         db.query(
@@ -25,6 +39,9 @@ router.get('/',
 /* update user profile */
 router.post('/updateProfile',
     function (req, res, next) {
+        if (!checkSession(req, res))
+            return;
+
         var reqBody = req.body;
         var username = reqBody.username;
         var name = reqBody.name;
@@ -64,6 +81,9 @@ router.post('/updateProfile',
 /* get reviews of user */
 router.get('/getReviews',
     function (req, res, next) {
+        if (!checkSession(req, res))
+            return;
+
         var reviews;
         db.query(
             'select * from userview',
@@ -78,6 +98,9 @@ router.get('/getReviews',
     });
 router.get('/deleteReviews',
     function (req, res, next) {
+        if (!checkSession(req, res))
+            return;
+
         var reviews;
         db.query(
             'delete * from review where ID = {1}',
@@ -93,6 +116,9 @@ router.get('/deleteReviews',
 /* edit review */
 router.post('/editReview',
     function (req, res, next) {
+        if (!checkSession(req, res))
+            return;
+
         var reqBody = req.body;
         var queryString;
         if (reqBody.oper == 'edit') {

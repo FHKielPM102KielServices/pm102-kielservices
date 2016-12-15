@@ -3,40 +3,59 @@ var router = express.Router();
 var passport = require('passport');
 var nodemailer = require('nodemailer');
 var LocalStrategy = require('passport-local').Strategy;
+var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var connection = require("./db");
 
-router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Kiel Services Web Application' });
+router.get('/', function (req, res, next) {
+    renderIndex(req, res, next);
 });
+
+var renderIndex = function (req, res, next) {
+    var loginDisplay = "";
+    var logoutDisplay = "";
+    var adminDashboardDisplay = "";
+    var hideStyle = "display:none;";
+    var sess = req.session;
+    if (sess !== undefined && sess.username) {
+        loginDisplay = hideStyle;
+        if (sess.username !== "admin")
+            adminDashboardDisplay = hideStyle;
+    }
+    else {
+        logoutDisplay = hideStyle;
+        adminDashboardDisplay = hideStyle;
+    }
+
+    res.render('index', {
+        title: 'Kiel Services Web Application',
+        loginDisplay: loginDisplay,
+        logoutDisplay: logoutDisplay,
+        adminDashboardDisplay: adminDashboardDisplay
+    });
+}
+
 /* GET home page. */
-router.get('/login', function(req, res, next) {
+router.get('/login', function (req, res, next) {
     res.render('login', { title: 'Kiel Services Web Application' });
 });
-router.get('/admindashboard', function(req, res, next) {
-    console.log('test');
-  /*  connection.query('select * from  review',function(err,rows){
-        console.log('test');
-
-        res.render('admindashboard', { title: 'Kiel Services Web Application',result : rows});
-    });*/
-    //res.render('admindashboard', { title: 'Kiel Services Web Application'});
-
-    connection.query("select * from  review",function(err,rows) {
-        res.render('admindashboard', { title: 'Kiel Services Web Application',result:rows});
-    });
-});
-router.get('/forgotpassword', function(req, res, next) {
+router.get('/forgotpassword', function (req, res, next) {
     res.render('forgotpassword', { title: 'Kiel Services Web Application' });
 });
-router.post('/loginOld', function(req, res, next) {
+router.post('/loginOld', function (req, res, next) {
     res.render('forgotpassword', { title: 'Kiel Services Web Application' });
 });
-router.get('/contactUs', function(req, res, next) {
+router.get('/contactUs', function (req, res, next) {
     res.render('contactUs', { title: 'Kiel Services Web Application' });
 });
-router.use(session({secret:"sdsdsdsds",saveUninitialized:true,resave:true}))
-router.get('/', function(req, res, next) {
+router.use(cookieParser());
+router.use(session({
+    secret: "sdsdsdsds",
+    saveUninitialized: true,
+    resave: false,
+    cookie: { secure: false }
+}))
+router.get('/', function (req, res, next) {
     res.render('chatbox', { title: 'Express' });
 });
 
@@ -46,44 +65,45 @@ router.get('/', function(req, res, next) {
 // });
 router.use(passport.initialize());
 router.use(passport.session());
-router.post('/login', function(req, res, next) {
+router.post('/login', function (req, res, next) {
     var username = req.param("username");
     var password = req.param("password");
-    sess = req.session;
-    sess.username = username;
-    console.log("user name value: "+ username);
-    console.log("password value: "+ password);
+    // sess = req.session;
+    // sess.username = username;
+    console.log("user name value: " + username);
+    console.log("password value: " + password);
     //1 Connect to DB
     //2 insure user exist
     //3 Redirect if user success
-    passport.authenticate('local', function(err, user, info) {
+    passport.authenticate('local', function (err, user, info) {
         if (err) return next(err)
         if (!user) {
             return res.redirect('/login')
         }
-        req.logIn(user, function(err) {
+        req.logIn(user, function (err) {
             if (err) return next(err);
-            res.render('indexhome', { title: 'Kiel Services Web Application' });
+            req.user = user;
+            req.session.username = username;
+            res.locals.user = user;
+            renderIndex(req, res, next);
         });
     })(req, res, next);
 });
-passport.use(new LocalStrategy(function(username, password, done,req) {
-    console.log("Login verification " + username + " "  + password);
-    console.log("user name value: "+ username);
-    console.log("password value: "+ password);
-    connection.query('SELECT * FROM users WHERE username = ? and password = ?', [username, password],function(err,rows){
-        if(err) {
+passport.use(new LocalStrategy(function (username, password, done, req) {
+    console.log("Login verification " + username + " " + password);
+    console.log("user name value: " + username);
+    console.log("password value: " + password);
+    connection.query('SELECT * FROM users WHERE username = ? and password = ?', [username, password], function (err, rows) {
+        if (err) {
             console.log('There is an error');
             throw err;
         }
-        if (!rows[0])
-        {
+        if (!rows[0]) {
             console.log("No User");
             return done(null, false, { message: 'Incorrect username.' });
         }
-        else
-        {
-            console.log("User exist" );
+        else {
+            console.log("User exist");
             console.log("User id: " + rows[0].password);
             return done(null, rows[0]);
         }
@@ -91,8 +111,8 @@ passport.use(new LocalStrategy(function(username, password, done,req) {
         console.log(rows);
     });
 }));
-router.post('/signup',function(req,res){
-    connection.query("select * from  users where email = '"+req.body.email+"'",function(err,rows) {
+router.post('/signup', function (req, res) {
+    connection.query("select * from  users where email = '" + req.body.email + "'", function (err, rows) {
         numRows = rows.length;
         console.log(numRows);
         if (err)
@@ -114,8 +134,8 @@ router.post('/signup',function(req,res){
         }
     });
 });
-router.post('/forgotpassword',function(req,res){
-    connection.query("select * from  users where email = '"+req.body.email+"'",function(err,rows) {
+router.post('/forgotpassword', function (req, res) {
+    connection.query("select * from  users where email = '" + req.body.email + "'", function (err, rows) {
         numRows = rows.length;
         console.log(numRows);
         if (err)
@@ -138,15 +158,15 @@ router.post('/forgotpassword',function(req,res){
         }
     });
 });
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function (user, done) {
     done(null, user);
 });
-passport.deserializeUser(function(id, done) {
+passport.deserializeUser(function (id, done) {
     //database.User.findById(id, function(err, user) {
     done(null, null);
     //});
 });
-router.get('/about', function(req, res, next) {
+router.get('/about', function (req, res, next) {
     res.render('about', { title: 'Kiel Services Web Application' });
 });
 // Logout endpoint
@@ -156,7 +176,7 @@ router.get('/logout', function (req, res) {
     res.redirect('/');
 });
 
-router.get('/chat_box', function(req, res, next) {
+router.get('/chat_box', function (req, res, next) {
     res.render('chat_box', { title: 'Kiel Services Web Application' });
 });
 
@@ -189,8 +209,8 @@ router.get('/chat_box', function(req, res, next) {
 });
 console.log('socket Server Running');*/
 
-router.get('/', function(req, res){
-    res.sendFile(__dirname +'chat_box');
+router.get('/', function (req, res) {
+    res.sendFile(__dirname + 'chat_box');
 });
 
 //io serverside code , this is important!!

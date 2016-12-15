@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var userDashboard = require('./routes/userDashboard');
-var admindashboard = require('./routes/admindashboard');
+var adminDashboard = require('./routes/adminDashboard');
 var ShowNearPlace = require('./routes/ShowNearPlace');
 var SubjectsList = require('./routes/SubjectsList');
 var Addreview = require('./routes/Addreview');
@@ -85,7 +85,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 // app.use('/users', users);
 app.use('/userDashboard', userDashboard);
-app.use('/admindashboard', admindashboard);
+app.use('/adminDashboard', adminDashboard);
 app.use('/ShowNearPlace', ShowNearPlace);
 app.use('/SubjectsList', SubjectsList);
 app.use('/Addreview', Addreview);

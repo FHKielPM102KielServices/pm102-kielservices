@@ -2,9 +2,32 @@ var express = require('express');
 var db = require("./db");
 var router = express.Router();
 
+var checkSession = function (req, res) {
+    var result = true;
+    sess = req.session;
+    if (req.session === undefined || !sess.username) {
+        result = false;
+        res.redirect('/login');
+    }
+
+    return result;
+}
+
+router.get('/', function (req, res, next) {
+    if (!checkSession(req, res))
+        return;
+
+    db.query("select * from  review", function (err, rows) {
+        res.render('adminDashboard', { title: 'Kiel Services Web Application', result: rows });
+    });
+});
+
 /* get reviews of user */
 router.get('/getReviews',
     function (req, res, next) {
+        if (!checkSession(req, res))
+            return;
+
         var reviews;
         db.query(
             'select * from userview',
@@ -21,6 +44,9 @@ router.get('/getReviews',
 /* edit review */
 router.post('/editReview',
     function (req, res, next) {
+        if (!checkSession(req, res))
+            return;
+
         var reqBody = req.body;
         var queryString;
         if (reqBody.oper == 'edit') {
