@@ -24,6 +24,7 @@ router.get('/', function (req, res, next) {
                 result: rows,
                 partials: {
                     headPartial: 'headPartial',
+                    jqUIHeadPartial: 'jqUIHeadPartial',
                     navBarPartial: 'navBarPartial'
                 }
             });
@@ -82,7 +83,7 @@ router.get('/getReviews',
 
         var reviews;
         db.query(
-            'SELECT ur.id, p.name, p.address, ur.description, ur.viewdate, ur.confirm FROM userview ur INNER JOIN places p on ur.placeid = p.id',
+            'SELECT ur.id, p.name, p.address, ur.description, ur.viewdate, c.value confirm FROM userview ur INNER JOIN places p on ur.placeid = p.id INNER JOIN constants c on ur.confirm = c.id',
             function (err, result) {
                 if (err)
                     throw err;
@@ -113,6 +114,42 @@ router.post('/editReview',
 
         if (queryString === undefined)
             return;
+
+        console.log(queryString);
+        db.query(queryString, function (error, result) {
+            if (error)
+                throw error;
+            else
+                res.end('success');
+        });
+    });
+/* confirm review */
+router.post('/confirmReview',
+    function (req, res, next) {
+        if (!checkSession(req, res))
+            return;
+
+        var reqBody = req.body;
+        var queryString = "update userview set confirm = '{0}' where id = {1}"
+            .format(1, reqBody.id);
+
+        console.log(queryString);
+        db.query(queryString, function (error, result) {
+            if (error)
+                throw error;
+            else
+                res.end('success');
+        });
+    });
+/* reject review */
+router.post('/rejectReview',
+    function (req, res, next) {
+        if (!checkSession(req, res))
+            return;
+
+        var reqBody = req.body;
+        var queryString = "update userview set confirm = '{0}' where id = {1}"
+            .format(2, reqBody.id);
 
         console.log(queryString);
         db.query(queryString, function (error, result) {

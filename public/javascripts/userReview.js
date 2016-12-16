@@ -29,8 +29,13 @@ $(document).ready(
                 {
                     label: 'Review Date', name: 'viewdate', width: 80,
                     editable: false
+                }, 
+                {
+                    label: 'Status', name: 'confirm', width: 140,
+                    editable: false
                 }
             ],
+            search:true,searchtext:"Find",
             sortname: 'OrderID',
             sortorder: 'asc',
             viewrecords: true,

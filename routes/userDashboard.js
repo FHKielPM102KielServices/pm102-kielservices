@@ -91,7 +91,7 @@ router.get('/getReviews',
 
         var reviews;
         db.query(
-            'SELECT ur.id, p.name, p.address, ur.description, ur.viewdate, ur.confirm FROM userview ur INNER JOIN places p on ur.placeid = p.id',
+            'SELECT ur.id, p.name, p.address, ur.description, ur.viewdate, c.value confirm FROM userview ur INNER JOIN places p on ur.placeid = p.id INNER JOIN constants c on ur.confirm = c.id',
             function (err, result) {
                 if (err)
                     throw err;
@@ -140,7 +140,7 @@ router.get('/getFavorites',
             return;
 
         db.query(
-            'SELECT uf.Id, p.name, p.address, uf.username FROM userfavorites uf INNER JOIN places p on uf.placeid = p.id',
+            'SELECT uf.id, p.name, p.address, uf.username FROM userfavorites uf INNER JOIN places p on uf.placeid = p.id',
             function (err, result) {
                 if (err)
                     throw err;

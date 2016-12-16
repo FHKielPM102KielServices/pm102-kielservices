@@ -10,7 +10,7 @@
                 <a href="/logout">Logout</a>
             </li>
             <li>
-                <a href="#services" onclick=$( "#menu-close").click();>Services</a>
+                <a href="/#services" onclick=$( "#menu-close").click();>Services</a>
             </li>
             <li>
                 <a href="#chat" onclick=$( "#menu-close").click();>Chat</a>

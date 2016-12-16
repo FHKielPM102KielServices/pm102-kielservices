@@ -11,19 +11,11 @@ $(document).ready(
             page: 1,
             colModel: [
                 {
-                    label: 'Id', name: 'id', width: 75, key: true,
-                    editable: false, editrules: { required: true }
-                },
-                {
                     label: 'Place Name', name: 'name', width: 75,
                     editable: false, editrules: { required: true }
                 },
                 {
                     label: 'Address', name: 'address', width: 140,
-                    editable: false // must set editable to true if you want to make the field editable
-                },
-                {
-                    label: 'Username', name: 'username', width: 140,
                     editable: false // must set editable to true if you want to make the field editable
                 }
             ],

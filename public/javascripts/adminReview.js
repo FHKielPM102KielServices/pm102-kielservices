@@ -29,11 +29,11 @@ $(document).ready(
                 {
                     label: 'Review Date', name: 'viewdate', width: 80,
                     editable: false
+                }, 
+                {
+                    label: 'Status', name: 'confirm', width: 140,
+                    editable: false
                 }
-                // ,{
-                //     label: 'Confirmed', name: 'confirm', width: 140,
-                //     editable: false
-                // }
             ],
             sortname: 'OrderID',
             sortorder: 'asc',
@@ -47,33 +47,53 @@ $(document).ready(
         $('#adminReviewGrid').navGrid('#adminReviewGridPager',
             // the buttons to appear on the toolbar of the grid
             { edit: false, add: false, del: true, search: false, refresh: false, view: false, position: "left", cloneToTop: false },
-            // options for the Edit Dialog
-            {
-                editCaption: "The Edit Dialog",
-                recreateForm: true,
-                checkOnUpdate: true,
-                checkOnSubmit: true,
-                closeAfterEdit: true,
-                editurl: function (data) {
-                    alert("edit");
-                },
-                errorTextFormat: function (data) {
-                    return 'Error: ' + data.responseText
-                }
-            },
-            // options for the Add Dialog
-            {
-                closeAfterAdd: true,
-                recreateForm: true,
-                errorTextFormat: function (data) {
-                    return 'Error: ' + data.responseText
-                }
-            },
             // options for the Delete Dailog
             {
                 errorTextFormat: function (data) {
                     return 'Error: ' + data.responseText
                 }
-            });
+            })
+            .navButtonAdd("#adminReviewGridPager", {
+                caption: "",
+                buttonicon: "ui-icon-check",
+                onClickButton: function () {
+                    var selectedId = $('#adminReviewGrid').jqGrid('getGridParam', 'selrow');
+                    $.post(
+                        "/adminDashboard/confirmReview",
+                        { id: selectedId },
+                        function (data) {
+                            if (data === 'success') {
+                                $('#adminReviewGrid').trigger('reloadGrid');
+                                $("#successAlert").show();
+                            }
+                            else
+                                $("#failureAlert").show();
+                        });
+                },
+                position: "last",
+                title: "confirm",
+                cursor: "pointer"
+            })
+            .navButtonAdd("#adminReviewGridPager", {
+                buttonicon: "ui-icon-closethick",
+                onClickButton: function () {
+                    var selectedId = $('#adminReviewGrid').jqGrid('getGridParam', 'selrow');
+                    $.post(
+                        "/adminDashboard/rejectReview",
+                        { id: selectedId },
+                        function (data) {
+                            if (data === 'success') {
+                                $('#adminReviewGrid').trigger('reloadGrid');
+                                $("#successAlert").show();
+                            }
+                            else
+                                $("#failureAlert").show();
+                        });
+                },
+                position: "last",
+                title: "Reject",
+                cursor: "pointer"
+            })
+            ;
     }
 );
