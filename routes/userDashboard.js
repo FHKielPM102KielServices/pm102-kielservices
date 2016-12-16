@@ -91,24 +91,7 @@ router.get('/getReviews',
 
         var reviews;
         db.query(
-            'select * from userview',
-            function (err, result) {
-                if (err)
-                    throw err;
-
-                reviews = result;
-                res.send(reviews);
-                console.log('The solution is: ', result);
-            });
-    });
-router.get('/deleteReviews',
-    function (req, res, next) {
-        if (!checkSession(req, res))
-            return;
-
-        var reviews;
-        db.query(
-            'delete * from review where ID = {1}',
+            'SELECT ur.id, p.name, p.address, ur.description, ur.viewdate, ur.confirm FROM userview ur INNER JOIN places p on ur.placeid = p.id',
             function (err, result) {
                 if (err)
                     throw err;
@@ -132,6 +115,49 @@ router.post('/editReview',
                     .format(reqBody.description, reqBody.id);
         }
         else if (reqBody.oper == 'del') {
+            queryString =
+                "delete from userview where id = {0}"
+                    .format(reqBody.id);
+        }
+
+        if (queryString === undefined)
+            return;
+
+        console.log(queryString);
+        db.query(queryString, function (error, result) {
+            if (error)
+                throw error;
+            else
+                res.end('success');
+        });
+    });
+
+
+/* get userFavorites of user */
+router.get('/getFavorites',
+    function (req, res, next) {
+        if (!checkSession(req, res))
+            return;
+
+        db.query(
+            'SELECT uf.Id, p.name, p.address, uf.username FROM userfavorites uf INNER JOIN places p on uf.placeid = p.id',
+            function (err, result) {
+                if (err)
+                    throw err;
+
+                res.send(result);
+                console.log('The solution is: ', result);
+            });
+    });
+/* edit favorite */
+router.post('/editFavorite',
+    function (req, res, next) {
+        if (!checkSession(req, res))
+            return;
+
+        var reqBody = req.body;
+        var queryString;
+        if (reqBody.oper == 'del') {
             queryString =
                 "delete from userview where id = {0}"
                     .format(reqBody.id);
