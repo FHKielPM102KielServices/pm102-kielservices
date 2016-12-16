@@ -6,11 +6,9 @@ var LocalStrategy = require('passport-local').Strategy;
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var connection = require("./db");
-
 router.get('/', function (req, res, next) {
     renderIndex(req, res, next);
 });
-
 var renderIndex = function (req, res, next) {
     var loginDisplay = "";
     var logoutDisplay = "";
@@ -26,7 +24,6 @@ var renderIndex = function (req, res, next) {
         logoutDisplay = hideStyle;
         adminDashboardDisplay = hideStyle;
     }
-
     res.render('index', {
         title: 'Kiel Services Web Application',
         loginDisplay: loginDisplay,
@@ -38,7 +35,6 @@ var renderIndex = function (req, res, next) {
         }
     });
 }
-
 /* GET home page. */
 router.get('/login', function (req, res, next) {
     res.render('login',
@@ -79,10 +75,6 @@ router.use(session({
     resave: false,
     cookie: { secure: false }
 }))
-router.get('/', function (req, res, next) {
-    res.render('chatbox', { title: 'Express' });
-});
-
 
 router.get('/chat_box', function(req, res, next) {
     res.render('chat_box', { title: 'Kiel Services Web Application'});
@@ -194,7 +186,6 @@ router.post('/contactUs',function(req,res){
         }
     });
 });
-
 passport.serializeUser(function(user, done) {
     done(null, user);
 });
@@ -212,14 +203,14 @@ router.get('/logout', function (req, res) {
     //res.send("logout success!");
     res.redirect('/');
 });
-
 router.get('/chat_box', function (req, res, next) {
     res.render('chat_box', { title: 'Kiel Services Web Application' });
 });
-
-
-router.get('/', function (req, res) {
-    res.sendFile(__dirname + 'chat_box');
+router.get('/adminLogin', function (req, res, next) {
+    res.render('adminLogin', { title: 'Kiel Services Web Application' });
+});
+router.get('/adminProfile', function (req, res, next) {
+    res.render('adminProfile', { title: 'Kiel Services Web Application' });
 });
 
 module.exports = router;

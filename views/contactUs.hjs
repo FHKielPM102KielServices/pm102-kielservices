@@ -14,6 +14,7 @@
 
 <body>
    <header id="top" class="header">
+   <div class="main-container">
        <div class="container">
            <div class="row text-center">
                <div class="col-lg-10 col-lg-offset-1" style="text-align: left">
@@ -45,7 +46,7 @@
                 </div>
             </div>
         </div>
-
+    </div>
     </header>
 </body>
 
@@ -54,7 +55,6 @@
 <script>
     $(document).ready(function(){
         $("#contact").click(function(){
-        alert("hello");
          var  EMAIL = $("#EMAIL").val();
           var  NAME = $("#NAME").val();
            var MESSAGE = $("#MESSAGE").val();

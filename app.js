@@ -11,7 +11,6 @@ var adminDashboard = require('./routes/adminDashboard');
 var ShowNearPlace = require('./routes/ShowNearPlace');
 var SubjectsList = require('./routes/SubjectsList');
 var Addreview = require('./routes/Addreview');
-//var chat_box = require('./routes/chat_server');
 
 require('./routes/extensions.js');
 
@@ -23,15 +22,15 @@ var io = require('socket.io')(httpServer);
 var usernames = {};
 
 // rooms which are currently available in chat
-//var rooms = ['room1','room2','room3'];
+var rooms = ['room1','room2','room3'];
 
 io.on('connection', function (socket) {
 // when the client emits 'adduser', this listens and executes
     socket.on('adduser', function(username){
         socket.username = username;
-  //      socket.room = 'room1';
+        socket.room = 'room1';
         usernames[username] = username;
-    //    socket.join('room1');
+        socket.join('room1');
         socket.emit('updatechat', 'KS_SERVER', 'you have connected to Kiel Services Administration');
         socket.broadcast.to('room1').emit('updatechat', 'KS_SERVER', username + ' has connected to this room');
         socket.emit('updaterooms', rooms, 'room1');
@@ -53,7 +52,6 @@ io.on('connection', function (socket) {
 httpServer.listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
 });
-//app.io = require('socket.io')();
 //view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hjs');
@@ -80,7 +78,6 @@ app.use('/adminDashboard', adminDashboard);
 app.use('/ShowNearPlace', ShowNearPlace);
 app.use('/SubjectsList', SubjectsList);
 app.use('/Addreview', Addreview);
-//app.use('/chat_box', chat_box);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   var err = new Error('Not Found');

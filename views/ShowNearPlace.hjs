@@ -272,6 +272,8 @@
     </script>
 </head>
 <body>
+<header id="top" class="header">
+<div class="main-container">
 
 
 <div id="title">
@@ -342,7 +344,8 @@
                 </div>
             </div>
         </div>
-
+</div>
+</header>
 
 <script>
     $(document).ready(function(){
