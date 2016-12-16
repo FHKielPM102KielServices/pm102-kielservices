@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{ title }}</title>
+
+    {{> headPartial}}
+
+    <link href="./stylesheets/bootstrap-theme.min.css" rel="stylesheet">
+
+    {{> jqUIHeadPartial}}
+
+    <script src="./javascripts/adminReview.js"></script>
+    <script src="./javascripts/adminContact.js"></script>
+</head>
+
+<body>
+    {{> navBarPartial}}
+
+    <header id="top" class="header">
+        <div class="main-container">
+            <div class="col-lg-10 col-lg-offset-1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div>
+                                <h1>Admin dashboard</h1>
+                                <p>To Update & Delete the reviews.</p>
+                            </div>
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#reviewTab" data-toggle="tab">Manage reviews</a>
+                                </li>
+                                <li>
+                                    <a href="#contactTab" data-toggle="tab">Contacts</a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div id="reviewTab" class="tab-pane">
+                                    <table id="adminReviewGrid" class="table table-striped"></table>
+				                    <div id="adminReviewGridPager"></div>
+				                </div>
+				                <div id="contactTab" class="tab-pane">
+                                    <table id="adminContactGrid" class="table table-striped"></table>
+                                    <div id="adminContactGridPager"></div>
+                                </div>
+                                </div>
+                            
+                            <div id="successAlert" class="alert alert-success" role="alert" style="display: none">Review is successfully verified.</div>
+                            <div id="faliureAlert" class="alert alert-danger" role="alert" style="display: none">Review verifying is failed!</div>
+                            </div>
+                                                        
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+</body>
+
+</html>

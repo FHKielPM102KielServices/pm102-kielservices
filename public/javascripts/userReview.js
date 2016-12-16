@@ -2,7 +2,7 @@ $(document).ready(
 
     function () {
         //review grid
-        $("#jqGrid").jqGrid({
+        $("#reviewGrid").jqGrid({
             url: '/userDashboard/getReviews',
             mtype: "GET",
             datatype: "json",
@@ -15,8 +15,12 @@ $(document).ready(
                     editable: false, editrules: { required: true }
                 },
                 {
-                    label: 'Place Id', name: 'placeid', width: 75,
+                    label: 'Place Name', name: 'name', width: 75,
                     editable: false, editrules: { required: true }
+                },
+                {
+                    label: 'Address', name: 'address', width: 140,
+                    editable: false // must set editable to true if you want to make the field editable
                 },
                 {
                     label: 'Description', name: 'description', width: 140,
@@ -25,22 +29,23 @@ $(document).ready(
                 {
                     label: 'Review Date', name: 'viewdate', width: 80,
                     editable: false
-                },
+                }, 
                 {
-                    label: 'Confirmed', name: 'confirm', width: 140,
+                    label: 'Status', name: 'confirm', width: 140,
                     editable: false
                 }
             ],
+            search:true,searchtext:"Find",
             sortname: 'OrderID',
             sortorder: 'asc',
             viewrecords: true,
             width: 780,
             height: 400,
             rowNum: 10,
-            pager: "#jqGridPager"
+            pager: "#reviewGridPager"
         });
 
-        $('#jqGrid').navGrid('#jqGridPager',
+        $('#reviewGrid').navGrid('#reviewGridPager',
             // the buttons to appear on the toolbar of the grid
             { edit: true, add: false, del: true, search: false, refresh: false, view: false, position: "left", cloneToTop: false },
             // options for the Edit Dialog

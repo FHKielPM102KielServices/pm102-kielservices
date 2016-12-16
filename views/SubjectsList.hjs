@@ -12,6 +12,11 @@
     <li><p><a href="/ShowNearPlace/hospital"> Hospital </a></p></li>
     <li><p><a href="/ShowNearPlace/grocery_or_supermarket"> Market </a></p></li>
     <li><p><a href="/ShowNearPlace/restaurant"> Restaurant </a></p></li>
+    <li><p><a href="/ShowNearPlace/pharmacy"> pharmacy </a></p></li>
+    <li><p><a href="/ShowNearPlace/bank"> bank </a></p></li>
+    <li><p><a href="/ShowNearPlace/school"> school </a></p></li>
+    <li><p><a href="/ShowNearPlace/library"> library </a></p></li>
+    <li><p><a href="/ShowNearPlace/cafe"> cafe </a></p></li>
 </ul>
 
 </body>

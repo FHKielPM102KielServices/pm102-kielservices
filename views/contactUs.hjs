@@ -2,47 +2,79 @@
 <html>
 
 <head>
-    <title>KIEL SERVICES</title>
-    <!--<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />-->
-    <!--<link href="./stylesheets/contactUsstyle.css" rel="stylesheet">-->
-    <!--<script src="contactUsvalidate.js"></script>-->
-    <link href="./stylesheets/bootstrap.min.css" rel="stylesheet">
-    <link href="./stylesheets/stylish-portfolio.css" rel="stylesheet">
-    <link href="./font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+   <title>KIEL SERVICES</title>
+   <!--<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />-->
+   <!--<link href="./stylesheets/contactUsstyle.css" rel="stylesheet">-->
+   <!--<script src="contactUsvalidate.js"></script>-->
+   <link href="./stylesheets/bootstrap.min.css" rel="stylesheet">
+   <link href="./stylesheets/stylish-portfolio.css" rel="stylesheet">
+   <link href="./font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 </head>
 
 <body>
-    <header id="top" class="header">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-lg-10 col-lg-offset-1" style="text-align: left">
-                    <h2>CONTACT US</h2>
+    
+    {{> navBarPartial}}
 
-                    <form action="" method="html" name="contact_form" id="contact_form">
-                        <div class="service-item">
-                            <div class="form-group well">
-                                <p>Have any questions?</p>
+   <header id="top" class="header">
+   <div class="main-container">
+       <div class="container">
+           <div class="row text-center">
+               <div class="col-lg-10 col-lg-offset-1" style="text-align: left">
+                   <h2>CONTACT US</h2>
 
-                                <label><b>E-Mail</b></label>
-                                <input class="form-control" type="email" id="email">
-                                <label><b>Name</b></label>
-                                <input type="text" class="form-control" name="first_name" id="first_name" required>
-                                <br><br>
-                                <label for="comments">Message / Query</label>
-                                <br>
-                                <textarea name="comments" id="comments" rows="5" cols="60"></textarea>
-                                <label id="lblError">&nbsp;</label><br/>
+                   <form name="contact_form">
+                       <div class="service-item">
+                           <div class="form-group well">
+                               <p>Have any questions?</p>
 
-                                <input class="btn btn-dark btn-lg" type="button" id="_submit" value="Submit" onclick="_validate()">
-                                <input class="btn btn-dark btn-lg" type="reset" id="reset" value="Reset Fields"><br>
+                               <label><b>E-Mail</b></label>
+                               <input type="text" class="form-control" id="EMAIL" placeholder="EMAIL" name="EMAIL" required>
+                               <label><b>Name</b></label>
+                               <input type="text" class="form-control" id="NAME" placeholder="NAME" name="NAME" required>
+                               <br><br>
+                               <label for="comments">Message / Query</label>
+                               <br>
+                               <textarea name="MESSAGE" id="MESSAGE" rows="5" cols="60" required></textarea>
+                               <label id="lblError">&nbsp;</label><br/>
+
+                                <!--<input class="btn btn-dark btn-lg" type="submit" id="_submit" value="Submit">-->
+
+                               <button type="submit" id="contact" class="btn btn-dark btn-lg">Submit Me</button>
+                               <input class="btn btn-dark btn-lg" type="reset" id="reset" value="Reset Fields"><br>
+
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-
+    </div>
     </header>
 </body>
 
 </html>
+
+<script>
+    $(document).ready(function(){
+        $("#contact").click(function(){
+         var  EMAIL = $("#EMAIL").val();
+          var  NAME = $("#NAME").val();
+           var MESSAGE = $("#MESSAGE").val();
+
+
+            /*
+             * Perform some validation here.
+             */
+            $.post("/contactUs",{EMAIL:EMAIL,NAME:NAME,MESSAGE:MESSAGE},function(data){
+                if(data==='done')
+                {
+                   alert("Message Sent, we will revert back to you shortly");
+                }
+                else {
+                    alert("Error Occured, try again Later");
+                }
+            });
+    });
+    });
+</script>

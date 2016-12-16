@@ -2,9 +2,23 @@ var express = require('express');
 var db = require("./db");
 var router = express.Router();
 
+var checkSession = function (req, res) {
+    var result = true;
+    sess = req.session;
+    if (req.session === undefined || !sess.username) {
+        result = false;
+        res.redirect('/login');
+    }
+
+    return result;
+}
+
 /* users profile info */
 router.get('/',
     function (req, res, next) {
+        if (!checkSession(req, res))
+            return;
+
         var users;
         //ToDo
         db.query(
@@ -18,6 +32,11 @@ router.get('/',
                     name: result[0].name,
                     dateOfBirth: result[0].dateOfBirth,
                     email: result[0].email,
+                    partials: {
+                        headPartial: 'headPartial',
+                        navBarPartial: 'navBarPartial',
+                        jqUIHeadPartial: 'jqUIHeadPartial'
+                    }
                 });
             });
     });
@@ -25,6 +44,9 @@ router.get('/',
 /* update user profile */
 router.post('/updateProfile',
     function (req, res, next) {
+        if (!checkSession(req, res))
+            return;
+
         var reqBody = req.body;
         var username = reqBody.username;
         var name = reqBody.name;
@@ -64,9 +86,12 @@ router.post('/updateProfile',
 /* get reviews of user */
 router.get('/getReviews',
     function (req, res, next) {
+        if (!checkSession(req, res))
+            return;
+
         var reviews;
         db.query(
-            'select * from userview',
+            'SELECT ur.id, p.name, p.address, ur.description, ur.viewdate, c.value confirm FROM userview ur INNER JOIN places p on ur.placeid = p.id INNER JOIN constants c on ur.confirm = c.id',
             function (err, result) {
                 if (err)
                     throw err;
@@ -76,10 +101,12 @@ router.get('/getReviews',
                 console.log('The solution is: ', result);
             });
     });
-
 /* edit review */
 router.post('/editReview',
     function (req, res, next) {
+        if (!checkSession(req, res))
+            return;
+
         var reqBody = req.body;
         var queryString;
         if (reqBody.oper == 'edit') {
@@ -88,6 +115,49 @@ router.post('/editReview',
                     .format(reqBody.description, reqBody.id);
         }
         else if (reqBody.oper == 'del') {
+            queryString =
+                "delete from userview where id = {0}"
+                    .format(reqBody.id);
+        }
+
+        if (queryString === undefined)
+            return;
+
+        console.log(queryString);
+        db.query(queryString, function (error, result) {
+            if (error)
+                throw error;
+            else
+                res.end('success');
+        });
+    });
+
+
+/* get userFavorites of user */
+router.get('/getFavorites',
+    function (req, res, next) {
+        if (!checkSession(req, res))
+            return;
+
+        db.query(
+            'SELECT uf.id, p.name, p.address, uf.username FROM userfavorites uf INNER JOIN places p on uf.placeid = p.id',
+            function (err, result) {
+                if (err)
+                    throw err;
+
+                res.send(result);
+                console.log('The solution is: ', result);
+            });
+    });
+/* edit favorite */
+router.post('/editFavorite',
+    function (req, res, next) {
+        if (!checkSession(req, res))
+            return;
+
+        var reqBody = req.body;
+        var queryString;
+        if (reqBody.oper == 'del') {
             queryString =
                 "delete from userview where id = {0}"
                     .format(reqBody.id);

@@ -1,0 +1,20 @@
+
+* { margin-top:36px; padding-left:7px; box-sizing: border-box; }
+body { font: 13px Helvetica, Arial; }
+.container{
+
+
+    background: #c0c0c0;
+}
+.form-group{
+
+    width:80%;
+
+}
+/*form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }*/
+form input { border: 0; padding: 10px; width: 12%; margin-right: .5%;margin-left: 206px;margin-top: -30px; background: #337ab7;  }
+form #button { color:#FFF; border: none; padding: 10px;  width: 9%; }
+#messages { list-style-type: none; margin: 0; padding: 0; }
+#messages li { padding: 5px 10px; }
+#messages li:nth-child(odd) { background: #eee; }
+#notifyUser { position: fixed; bottom: 42px; width: 50%; }

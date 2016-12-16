@@ -1,0 +1,6 @@
+    <link href="./stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="./stylesheets/stylish-portfolio.css" rel="stylesheet">
+    <link href="./font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <script src="./javascripts/jquery.js"></script>
+    <script src="./javascripts/bootstrap.min.js"></script>

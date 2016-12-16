@@ -4,7 +4,7 @@ var db;
 var settings = {
     host     : 'localhost',
     user     : 'root',
-    password : 'root',
+    password : '1234',
     database : 'KielServices'
 };
 
