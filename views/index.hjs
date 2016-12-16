@@ -72,33 +72,33 @@
                                 <div class="service-item">
                                     <span class="fa-stack fa-4x">
                             <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-gamepad fa-stack-1x text-primary"></i>
+                            <i class="fa fa-book fa-stack-1x text-primary"></i>
                             </span>
-                                    <h4><strong>Entertainments</strong></h4>
+                                    <h4><strong>Library</strong></h4>
                                     </br>
-                                    <a href="" class="btn btn-dark">Search</a>
+                                    <a href="ShowNearPlace/library" class="btn btn-dark">Search</a>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6">
                                 <div class="service-item">
                                     <span class="fa-stack fa-4x">
                             <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-hotel fa-stack-1x text-primary"></i>
+                            <i class="fa fa-coffee   fa-stack-1x text-primary"></i>
                             </span>
-                                    <h4><strong>Dormitories</strong></h4>
+                                    <h4><strong>Cafe</strong></h4>
                                     </br>
-                                    <a href="" class="btn btn-dark">Search</a>
+                                    <a href="ShowNearPlace/cafe" class="btn btn-dark">Search</a>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6">
                                 <div class="service-item">
                                     <span class="fa-stack fa-4x">
                             <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-shopping-bag fa-stack-1x text-primary"></i>
+                            <i class="fa fa-plus-square  fa-stack-1x text-primary"></i>
                             </span>
-                                    <h4><strong>Malls</strong></h4>
+                                    <h4><strong>Pharmacy</strong></h4>
                                     </br>
-                                    <a href="" class="btn btn-dark">Search</a>
+                                    <a href="ShowNearPlace/pharmacy" class="btn btn-dark">Search</a>
                                 </div>
                             </div>
                         </div>

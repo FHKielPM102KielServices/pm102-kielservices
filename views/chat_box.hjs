@@ -27,6 +27,7 @@
 </head>
 <body>
 <header id="top" class="header">
+<div class="main-container">
         <div class="col-lg-10 col-lg-offset-1">
             <section id="main" class="container">
                  <div class="form-group">
@@ -34,7 +35,17 @@
                             <div class="row chat-wrapper">
                                 <div class='col-xs-6 col-md-9 chat-text'>
                                        <div id="chat" class="">
-                                            <div id="conversation"></div>
+                                      <div class="media">
+                                                                                 <a class="pull-left" href="#">
+                                                                                      <img class="media-object img-circle " src="./images/download.jpg" width="60px" height = "70px"/>
+                                                                                 </a>
+                                                                                 <div class="media-body" >
+                                                                                     <br />
+                                                                                     <small class="text-muted"><div id="conversation"></small>                                                                                                                               </small>
+                                                                                     <hr />
+                                                                                 </div>
+                                                                            </div>
+                                                                            </div>
                                        </div>
                                  </div>
                                 <div class="clearfix"></div>
@@ -46,6 +57,7 @@
                  </div>
             </section>
         </div>
+ </div>
 </header>
 <script>
     var socket = io.connect();
