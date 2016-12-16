@@ -5,7 +5,7 @@ var router = express.Router();
 var checkSession = function (req, res) {
     var result = true;
     sess = req.session;
-    if (sess === undefined || !sess.username) {
+    if (sess === undefined || !sess.username || sess.username!="admin") {
         result = false;
         res.redirect('/login');
     }

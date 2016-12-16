@@ -37,9 +37,27 @@ var renderIndex = function (req, res, next) {
 }
 /* GET home page. */
 router.get('/login', function (req, res, next) {
+    var loginDisplay = "";
+    var logoutDisplay = "";
+    var adminDashboardDisplay = "";
+    var hideStyle = "display:none;";
+    var sess = req.session;
+    if (sess !== undefined && sess.username) {
+        loginDisplay = hideStyle;
+        if (sess.username !== "admin")
+            adminDashboardDisplay = hideStyle;
+    }
+    else {
+        logoutDisplay = hideStyle;
+        adminDashboardDisplay = hideStyle;
+    }
+
     res.render('login',
         {
             title: 'Kiel Services Web Application',
+            loginDisplay: loginDisplay,
+            logoutDisplay: logoutDisplay,
+            adminDashboardDisplay: adminDashboardDisplay,
             partials: {
                 headPartial: 'headPartial',
                 navBarPartial: 'navBarPartial'
@@ -47,8 +65,26 @@ router.get('/login', function (req, res, next) {
         });
 });
 router.get('/forgotpassword', function (req, res, next) {
+    var loginDisplay = "";
+    var logoutDisplay = "";
+    var adminDashboardDisplay = "";
+    var hideStyle = "display:none;";
+    var sess = req.session;
+    if (sess !== undefined && sess.username) {
+        loginDisplay = hideStyle;
+        if (sess.username !== "admin")
+            adminDashboardDisplay = hideStyle;
+    }
+    else {
+        logoutDisplay = hideStyle;
+        adminDashboardDisplay = hideStyle;
+    }
+
     res.render('forgotpassword', {
         title: 'Kiel Services Web Application',
+        loginDisplay: loginDisplay,
+        logoutDisplay: logoutDisplay,
+        adminDashboardDisplay: adminDashboardDisplay,
         partials: {
             headPartial: 'headPartial',
             navBarPartial: 'navBarPartial'
@@ -59,9 +95,27 @@ router.post('/loginOld', function (req, res, next) {
     res.render('forgotpassword', { title: 'Kiel Services Web Application' });
 });
 router.get('/contactUs', function (req, res, next) {
+    var loginDisplay = "";
+    var logoutDisplay = "";
+    var adminDashboardDisplay = "";
+    var hideStyle = "display:none;";
+    var sess = req.session;
+    if (sess !== undefined && sess.username) {
+        loginDisplay = hideStyle;
+        if (sess.username !== "admin")
+            adminDashboardDisplay = hideStyle;
+    }
+    else {
+        logoutDisplay = hideStyle;
+        adminDashboardDisplay = hideStyle;
+    }
+
     res.render('contactUs',
         {
             title: 'Kiel Services Web Application',
+            loginDisplay: loginDisplay,
+            logoutDisplay: logoutDisplay,
+            adminDashboardDisplay: adminDashboardDisplay,
             partials: {
                 headPartial: 'headPartial',
                 navBarPartial: 'navBarPartial'
@@ -76,8 +130,8 @@ router.use(session({
     cookie: { secure: false }
 }))
 
-router.get('/chat_box', function(req, res, next) {
-    res.render('chat_box', { title: 'Kiel Services Web Application'});
+router.get('/chat_box', function (req, res, next) {
+    res.render('chat_box', { title: 'Kiel Services Web Application' });
 });
 router.use(passport.initialize());
 router.use(passport.session());
@@ -174,7 +228,7 @@ router.post('/forgotpassword', function (req, res) {
         }
     });
 });
-router.post('/contactUs',function(req,res){
+router.post('/contactUs', function (req, res) {
     var queryString = "insert into contact(EMAIL,NAME,MESSAGE) values('" + req.body.EMAIL + "','" + req.body.NAME + "','" + req.body.MESSAGE + "')";
     console.log(queryString);
     connection.query(queryString, function (error, results) {
@@ -186,7 +240,7 @@ router.post('/contactUs',function(req,res){
         }
     });
 });
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function (user, done) {
     done(null, user);
 });
 passport.deserializeUser(function (id, done) {

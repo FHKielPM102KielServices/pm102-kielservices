@@ -272,6 +272,9 @@
     </script>
 </head>
 <body>
+    
+    {{> navBarPartial}}
+
 <header id="top" class="header">
 <div class="main-container">
 

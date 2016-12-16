@@ -14,9 +14,32 @@ var sess;
 
 router.get('/:subject', function (req, res) {
     sess = req.session;
-    // console.log(sess.username);
+
+    var loginDisplay = "";
+    var logoutDisplay = "";
+    var adminDashboardDisplay = "";
+    var hideStyle = "display:none;";
+    if (sess !== undefined && sess.username) {
+        loginDisplay = hideStyle;
+        if (sess.username !== "admin")
+            adminDashboardDisplay = hideStyle;
+    }
+    else {
+        logoutDisplay = hideStyle;
+        adminDashboardDisplay = hideStyle;
+    }
+
     if (sess.username) {
-        res.render('ShowNearPlace', { subject: req.params.subject });
+        res.render('ShowNearPlace',
+            {
+                subject: req.params.subject,
+                loginDisplay: loginDisplay,
+                logoutDisplay: logoutDisplay,
+                adminDashboardDisplay: adminDashboardDisplay,
+                partials: {
+                    navBarPartial: 'navBarPartial'
+                }
+            });
     }
     else
         res.redirect('/login');
@@ -25,7 +48,7 @@ router.get('/:subject', function (req, res) {
 router.post('/Userview', function (req, res, next) {
 
     var palceid = req.body.placeid;
-    var query = "SELECT * FROM userview where placeid = '" + palceid.toString() + "' and confirm='1'";
+    var query = "SELECT ur.* FROM userview ur inner join places p on ur.placeid = p.id where p.placeid = '" + palceid.toString() + "' and ur.confirm=1";
 
     db.query(query, function (err, result) {
 
@@ -86,39 +109,42 @@ router.post('/Addfavorite', function (req, res, next) {
 })
 
 router.post('/AddReview', function (req, res, next) {
-    var PId = req.body.PId;
+    var googlePId = req.body.PId;
     var ReviewTextarea = req.body.ReviewTextarea;
     var uname = sess.username;
     var date = new Date().toLocaleDateString();
+    var PId;
 
-    var queryString = "insert into userview(username,Placeid,description,viewdate) values('" + uname + "','" + PId + "','" + ReviewTextarea + "','" + date + "')";
-    // console.log('date:'+date);
-    db.query(queryString, function (error, results) {
-        if (error) {
-            throw error;
-        }
-        else {
+    var insertReview = function (placeid) {
+        var queryString = "insert into userview(username,Placeid,description,viewdate) values('" + uname + "','" + PId + "','" + ReviewTextarea + "','" + date + "')";
+        // console.log('date:'+date);
+        db.query(queryString, function (error, results) {
+            if (error)
+                throw error;
+        });
+    }
 
-            var query = "SELECT * FROM places where placeid = '" + PId.toString() + "'";
+    var query = "SELECT * FROM places where placeid = '" + googlePId.toString() + "'";
+    db.query(query, function (err, result) {
+        if (err) throw err;
+        if (result.length == 0) {
+            var queryString2 = "insert into places(Placeid,name,address,tel,openhour) values('" + googlePId + "','" + req.body.name + "','" + req.body.address + "','" + req.body.tel + "','" + req.body.openhour + "')";
+            db.query(queryString2, function (error, results) {
+                if (error)
+                    throw error;
 
-            db.query(query, function (err, result) {
-                if (err) throw err;
-                if (result.length == 0) {
-                    var queryString2 = "insert into places(Placeid,name,address,tel,openhour) values('" + PId + "','" + req.body.name + "','" + req.body.address + "','" + req.body.tel + "','" + req.body.openhour + "')";
-                    db.query(queryString2, function (error, results) {
-                        if (error) {
-                            throw error;
-                        }
-                        // console.log('queryString2:' + queryString2);
-                    });
-
-                }
+                PId = result[0].id;
+                insertReview();
                 res.end('success');
             });
         }
-
-
+        else {
+            PId = result[0].id;
+            insertReview()
+            res.end('success');
+        }
     });
 
 });
+
 module.exports = router;
