@@ -17,7 +17,7 @@
         <div class="text-vertical-center">
             <!--<img src="./images/logo.PNG" height="200" width="200" style="marginwidth:10 marginheight:10">-->
             <h1>Kiel Services</h1>
-            <h3>Find Services &amp; Basic Necessities in Kiel</h3>
+            <h3>Find Services &amp; Basic Necessities</h3>
             <br>
             <a href="#services" class="btn btn-dark btn-lg">Services</a>
             <a href="#about" class="btn btn-dark btn-lg">Find Out More</a>
@@ -114,10 +114,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>City of Kiel Welcomes You!</h2>
-                    <h3>Our site is designed to assist you in finding information you seek regarding the City of Kiel.</h3>
-                    <p class="lead">Kiel Services is a Web Application which Provides all the services in a single platform for the internationals
-                        as well as natives of kiel
+                    <h3><i>Kiel Services Welcomes You!!!</i></h3>
+                    <p class="lead">Our site is designed to assist you in finding information you seek regarding Services in the City of Kiel</p>
+                    <p>Kiel Services is a Web Application which Provides all services in a single platform</p>
                 </div>
             </div>
     </section>
@@ -137,9 +136,9 @@
                             <i class="fa fa-compass fa-stack-1x text-primary"></i>
                             </span>
                                 <h4>
-                                    <strong>Find near facilities</strong>
+                                    <strong>Find nearby facilities</strong>
                                 </h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <p>Signup &amp; find the near by facilities.</p>
                                 <a href="#map" class="btn btn-light">Learn More</a>
                             </div>
                         </div>
@@ -150,9 +149,9 @@
                             <i class="fa fa-wechat fa-stack-1x text-primary"></i>
                             </span>
                                 <h4>
-                                    <strong>Chat with other pleople ... </strong>
+                                    <strong>Chat for your queries with our team... </strong>
                                 </h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <p>.</p>
                                 <a href="#chat" class="btn btn-light">Learn More</a>
                             </div>
                         </div>
@@ -170,7 +169,7 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="portfolio-item">
-                            <h2>Find near facilities</h2>
+                            <h2>Find near by facilities</h2>
                             <hr class="small">
                             <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x"></i>
@@ -184,14 +183,14 @@
                         </h4>
                         <div style="text-align: left">
                             <ul>
-                                <li><span>Hospitals, Stores, Police, ...</span></li>
-                                <li><span>Serach nearest services and sort based on user rates.</span></li>
+                                <li><span>Hospitals, Pharmacy, Cafes, Restaurants etc...</span></li>
+                                <li><span>Serach nearest services and sort based on user reviews.</span></li>
                                 <li><span>See other users reviews.</span></li>
-                                <li><span>Keep your faivorite places.</span></li>
+                                <li><span>Store your favorite places.</span></li>
                             </ul>
-                            <p><span>The best way to find yourself is to lose yourself in the service of others.</span></p>
+                            <p><span></span></p>
                         </div>
-                        <a href="#contact" class="btn btn-light">Learn More</a>
+                        <a href="#contact" class="btn btn-light"></a>
                     </div>
                 </div>
             </div>
@@ -208,7 +207,7 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-12">
                             <div class="portfolio-item">
-                                <h2>Chat with nearest users</h2>
+                                <h2>Chat with Our Team members</h2>
                                 <hr class="small">
                                 <span class="fa-stack fa-4x">
                             <i class="fa fa-circle fa-stack-2x"></i>
@@ -222,10 +221,10 @@
                             </h4>
                             <div style="text-align: left">
                                 <ul>
-                                    <li><span>Find nearest users at any place of kiel ...</span></li>
-                                    <li><span>Having a chat based on a place</span></li>
+                                    <li><span>Find nearest Services from any place in kiel ...</span></li>
+                                    <li><span>Sort Services based on your location</span></li>
                                 </ul>
-                                <p><span>The best way to find yourself is to lose yourself in the service of others.</span></p>
+                                <p><span></span></p>
                             </div>
                             <a href="#contact" class="btn btn-light">Learn More</a>
                         </div>
@@ -264,7 +263,7 @@
                     </p>
                     <ul class="list-unstyled">
                         <li><i class="fa fa-phone fa-fw"></i> (049) 0431 2100</li>
-                        <li><i class="fa fa-envelope-o fa-fw"></i> <a href="mailto:info@kielservices.com">info@kielservices.com</a>
+                        <li><i class="fa fa-envelope-o fa-fw"></i> <a href="mailto:info@kielservices.com">infokielservices@gmail.com</a>
                         </li>
                     </ul>
                     <br>
