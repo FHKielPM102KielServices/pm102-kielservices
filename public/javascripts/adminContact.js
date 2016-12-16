@@ -3,22 +3,23 @@ $(document).ready(
     function () {
         //review grid
         $("#adminContactGrid").jqGrid({
-            url: '/userDashboard/getmessage',
+            url: '/adminDashboard/getContacts',
             mtype: "GET",
             datatype: "json",
             // we set the changes to be made at client side using predefined word clientArray
+            editurl: '/adminDashboard/editContact',
             page: 1,
             colModel: [
                 {
-                    label: 'EMAIL', name: 'EMAIL', width: 75,
+                    label: 'Email', name: 'EMAIL', width: 75,
                     editable: false, editrules: { required: true }
                 },
                 {
-                    label: 'NAME', name: 'NAME', width: 140,
+                    label: 'Name', name: 'NAME', width: 140,
                     editable: true // must set editable to true if you want to make the field editable
                 },
                 {
-                    label: 'MESSAGE', name: 'MESSAGE', width: 80,
+                    label: 'Message', name: 'MESSAGE', width: 80,
                     editable: false
                 }
             ],

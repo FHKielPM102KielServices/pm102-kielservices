@@ -35,10 +35,10 @@
                                     <a href="#favoriteTab" data-toggle="tab">Chat</a>
                                 </li>
                                 <li>
-                                    <a href="#reviewTab" data-toggle="tab">Manage Reviews</a>
+                                    <a href="#reviewTab" data-toggle="tab">Manage reviews</a>
                                 </li>
                                 <li>
-                                    <a href="#contactTab" data-toggle="tab">Contact</a>
+                                    <a href="#contactTab" data-toggle="tab">Contacts</a>
                                 </li>
                             </ul>
                             <div class="tab-content">

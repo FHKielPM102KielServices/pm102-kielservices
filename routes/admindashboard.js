@@ -30,6 +30,50 @@ router.get('/', function (req, res, next) {
     });
 });
 
+/* get contacts of user */
+router.get('/getContacts',
+    function (req, res, next) {
+        if (!checkSession(req, res))
+            return;
+
+        var reviews;
+        db.query(
+            'SELECT * FROM contact',
+            function (err, result) {
+                if (err)
+                    throw err;
+
+                res.send(result);
+                console.log('The solution is: ', result);
+            });
+    });
+
+/* edit review */
+router.post('/editContact',
+    function (req, res, next) {
+        if (!checkSession(req, res))
+            return;
+
+        var reqBody = req.body;
+        var queryString;
+        if (reqBody.oper == 'del') {
+            queryString =
+                "delete from contact where id = {0}"
+                    .format(reqBody.id);
+        }
+
+        if (queryString === undefined)
+            return;
+
+        console.log(queryString);
+        db.query(queryString, function (error, result) {
+            if (error)
+                throw error;
+            else
+                res.end('success');
+        });
+    });
+
 /* get reviews of user */
 router.get('/getReviews',
     function (req, res, next) {
@@ -38,13 +82,12 @@ router.get('/getReviews',
 
         var reviews;
         db.query(
-            'select * from userview',
+            'SELECT ur.id, p.name, p.address, ur.description, ur.viewdate, ur.confirm FROM userview ur INNER JOIN places p on ur.placeid = p.id',
             function (err, result) {
                 if (err)
                     throw err;
 
-                reviews = result;
-                res.send(reviews);
+                res.send(result);
                 console.log('The solution is: ', result);
             });
     });
