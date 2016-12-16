@@ -27,11 +27,29 @@ router.get('/',
                 if (err)
                     throw err;
 
+                sess = req.session;
+                var loginDisplay = "";
+                var logoutDisplay = "";
+                var adminDashboardDisplay = "";
+                var hideStyle = "display:none;";
+                if (sess !== undefined && sess.username) {
+                    loginDisplay = hideStyle;
+                    if (sess.username !== "admin")
+                        adminDashboardDisplay = hideStyle;
+                }
+                else {
+                    logoutDisplay = hideStyle;
+                    adminDashboardDisplay = hideStyle;
+                }
+
                 res.render('userDashboard', {
                     username: result[0].username,
                     name: result[0].name,
                     dateOfBirth: result[0].dateOfBirth,
                     email: result[0].email,
+                    loginDisplay: loginDisplay,
+                    logoutDisplay: logoutDisplay,
+                    adminDashboardDisplay: adminDashboardDisplay,
                     partials: {
                         headPartial: 'headPartial',
                         navBarPartial: 'navBarPartial',
